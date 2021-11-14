@@ -14,22 +14,24 @@ import com.example.myapplication.modal.LogoCompany;
 
 import java.util.ArrayList;
 
-public class LogoCompanyAdapter extends RecyclerView.Adapter<LogoCompanyAdapter.LogoCompanyViewHolder>{
+public class LogoCompanyAdapter extends RecyclerView.Adapter<LogoCompanyAdapter.LogoCompanyViewHolder> {
 
     public Context context;
     public ArrayList<LogoCompany> logoCompanyList;
 
-    public LogoCompanyAdapter(Context context){
+    public LogoCompanyAdapter(Context context) {
         this.context = context;
     }
-    public void setData(ArrayList<LogoCompany> logoCompanyList){
+
+    public void setData(ArrayList<LogoCompany> logoCompanyList) {
         this.logoCompanyList = logoCompanyList;
         notifyDataSetChanged();
     }
+
     @NonNull
     @Override
     public LogoCompanyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_logocompany,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_logocompany, parent, false);
         return new LogoCompanyViewHolder(view);
     }
 
@@ -44,9 +46,10 @@ public class LogoCompanyAdapter extends RecyclerView.Adapter<LogoCompanyAdapter.
         return logoCompanyList.size();
     }
 
-    public class LogoCompanyViewHolder extends RecyclerView.ViewHolder{
+    public class LogoCompanyViewHolder extends RecyclerView.ViewHolder {
 
         public ImageView imgLogoCompany;
+
         public LogoCompanyViewHolder(@NonNull View itemView) {
             super(itemView);
 

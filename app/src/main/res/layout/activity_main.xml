@@ -72,48 +72,44 @@
         app:layout_constraintTop_toBottomOf="@+id/search"
         tools:layout_editor_absoluteX="20dp" />
 
-    <ScrollView
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rcvLogoCompany">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:fontFamily="@font/poppins_semibold"
-                android:letterSpacing="0.1"
-                android:text="Recommend"
-                android:textAlignment="center"
-                android:textColor="@color/blue1"
-                android:textSize="20sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:fontFamily="@font/poppins_regular"
-                android:letterSpacing="0.1"
-                android:text="See all"
-                android:textColor="@color/blue2"
-                android:textSize="10sp" />
-
-        </RelativeLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/BikeRecommend"
-            android:layout_marginTop="15dp"/>
+            android:layout_alignParentLeft="true"
+            android:fontFamily="@font/poppins_semibold"
+            android:letterSpacing="0.1"
+            android:text="Harley Davidson"
+            android:textAlignment="center"
+            android:textColor="@color/blue1"
+            android:textSize="20sp" />
 
-    </ScrollView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:fontFamily="@font/poppins_regular"
+            android:letterSpacing="0.1"
+            android:text="See all"
+            android:textColor="@color/blue2"
+            android:textSize="10sp" />
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvHarleyDavidson"
+        android:layout_width="match_parent"
+        android:layout_marginTop="15dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+        tools:layout_editor_absoluteX="16dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

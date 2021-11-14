@@ -14,6 +14,8 @@ import com.example.myapplication.adapter.HarleyDavidsonAdapter;
 import com.example.myapplication.adapter.LogoCompanyAdapter;
 import com.example.myapplication.modal.HarleyDavidson;
 import com.example.myapplication.modal.LogoCompany;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,6 +26,7 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
@@ -78,25 +81,47 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void EventChangeListener() {
-
-        db.collection("HarleyDavidson").orderBy("PanAmerica", Query.Direction.ASCENDING)
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+        db.collection("HarleyDavidson")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
-                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                        if(error != null){
-                            Log.e("failled",error.getMessage());
-                            return;
-                        }
-                        for(DocumentChange dc : value.getDocumentChanges()){
-
-                            if(dc.getType() == DocumentChange.Type.ADDED){
-                                harleyDavidsonArrayList.add(dc.getDocument().toObject(HarleyDavidson.class));
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d("====>", document.getId() + " => " + document.getData());
+                                harleyDavidsonArrayList.add(document.toObject(HarleyDavidson.class));
+                                harleyDavidsonAdapter.notifyDataSetChanged();
                             }
-                            harleyDavidsonAdapter.notifyDataSetChanged();
+                        } else {
+                            Log.w("====>", "Error getting documents.", task.getException());
                         }
                     }
                 });
+
     }
+
+//    private void EventChangeListener() {
+//
+//        db.collection("HarleyDavidson").orderBy("Pan America", Query.Direction.ASCENDING)
+//                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+//                    @Override
+//                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+//                        if(error != null){
+//                            Log.e("failled",error.getMessage());
+//                            return;
+//                        }
+//                        for(DocumentChange dc : value.getDocumentChanges()){
+//
+//                            if(dc.getType() == DocumentChange.Type.ADDED){
+//                                harleyDavidsonArrayList.add(dc.getDocument().toObject(HarleyDavidson.class));
+//                            }
+//                            harleyDavidsonAdapter.notifyDataSetChanged();
+//                        }
+//                    }
+//                });
+//   }
+//
+
 
 //    private ArrayList<HarleyDavidson> getListHarleyDavidson() {
 //        ArrayList<HarleyDavidson> list = new ArrayList<>();

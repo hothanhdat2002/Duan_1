@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/custom_dialog">
+
+
+    <TextView
+        android:id="@+id/tieude"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custom_tieude"
+        android:fontFamily="@font/argentum_regular"
+        android:gravity="center"
+        android:padding="12dp"
+        android:text="HÃNG XE"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/iv_dialog_xe"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/iv_dialog_xe"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:paddingLeft="20dp"
+        app:layout_constraintStart_toStartOf="@+id/tieude"
+        app:layout_constraintTop_toBottomOf="@+id/tieude" />
+
+    <EditText
+        android:id="@+id/et_tenxe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="Tên xe"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tieude" />
+
+    <EditText
+        android:id="@+id/et_giaxe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="Giá xe"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tieude" />
+
+    <EditText
+        android:id="@+id/et_khoiluong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="152dp"
+        android:layout_marginEnd="12dp"
+        android:ems="10"
+        android:hint="Khối lượng"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tieude" />
+
+    <EditText
+        android:id="@+id/et_vantoc"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="348dp"
+        android:layout_marginEnd="224dp"
+        android:ems="10"
+        android:hint="Vận tốc"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tieude" />
+
+    <EditText
+        android:id="@+id/et_thetich"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="348dp"
+        android:layout_marginEnd="32dp"
+        android:ems="10"
+        android:hint="Thể tích"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tieude" />
+
+    <EditText
+        android:id="@+id/et_nhienlieu"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="404dp"
+        android:layout_marginEnd="228dp"
+        android:ems="10"
+        android:hint="Nhiên liệu"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tieude" />
+
+    <EditText
+        android:id="@+id/et_dongco"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="404dp"
+        android:layout_marginEnd="32dp"
+        android:ems="10"
+        android:hint="Động cơ"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tieude" />
+
+    <Button
+        android:id="@+id/btn_choose_xe"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/sua"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_dialog_xe"
+        app:layout_constraintEnd_toEndOf="@+id/iv_dialog_xe"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <LinearLayout
+        android:id="@+id/layout_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="284dp"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_choose_color">
+
+        <Button
+            android:id="@+id/btn_cancel_xe"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/custom_button_dialog_cancel"
+            android:fontFamily="@font/argentum_regular"
+            android:text="Thoát"
+            android:textAllCaps="false"
+            android:textColor="#787878"
+            android:textSize="16dp"
+            tools:layout_editor_absoluteX="-1dp"
+            tools:layout_editor_absoluteY="272dp" />
+
+        <Button
+            android:id="@+id/btn_add_xe"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/custom_button_dialog_add"
+            android:fontFamily="@font/argentum_regular"
+            android:text="Lưu"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            tools:layout_editor_absoluteX="-1dp"
+            tools:layout_editor_absoluteY="204dp" />
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_choose_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Màu sắc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.049"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_dialog_xe" />
+
+    <LinearLayout
+        android:id="@+id/layout_color"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="28dp"
+        android:background="#000000"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_choose_color"
+        app:layout_constraintStart_toEndOf="@+id/btn_choose_color"
+        app:layout_constraintTop_toTopOf="@+id/btn_choose_color"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_dialog_xe">
+
+        <ImageButton
+            android:id="@+id/ib_giam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/dau_tru" />
+
+        <TextView
+            android:id="@+id/tv_value_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:text="1"
+            android:textSize="30dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageButton"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton"
+            app:layout_constraintHorizontal_bias="0.509"
+            app:layout_constraintStart_toEndOf="@+id/imageButton2"
+            app:layout_constraintTop_toTopOf="@+id/imageButton2" />
+
+
+        <ImageButton
+            android:id="@+id/ib_tang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            app:srcCompat="@drawable/add" />
+
+    </LinearLayout>
+
+    <Spinner
+        android:id="@+id/sp_hangxe"
+        android:layout_width="409dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_nhienlieu" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

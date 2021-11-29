@@ -3,7 +3,45 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Admin/Documents/GitHub/Duan1/app/src/main/res/drawable-v24/add.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/Duan1/app/src/main/res/drawable-v24/custom_button_dialog_add.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/Duan1/app/src/main/res/drawable-v24/custom_button_dialog_cancel.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/Duan1/app/src/main/res/drawable-v24/custom_dialog.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/Duan1/app/src/main/res/drawable-v24/custom_dialog_et.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/Duan1/app/src/main/res/drawable-v24/custom_item_hangxe.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/Duan1/app/src/main/res/drawable-v24/custom_rv_main.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/Duan1/app/src/main/res/drawable-v24/custom_tieude.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/Duan1/app/src/main/res/drawable-v24/menu_back.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/Duan1/app/src/main/res/drawable-v24/sua.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/Duan1/app/src/main/res/drawable/custom_item_xe.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/Duan1/app/src/main/res/drawable/custom_rv_hdctr.xml" value="0.26205128205128203" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/Duan1/app/src/main/res/drawable/email.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/Duan1/app/src/main/res/drawable/ic_baseline_close_24.xml" value="0.26205128205128203" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/Duan1/app/src/main/res/drawable/ic_launcher_background.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/Duan1/app/src/main/res/drawable/menu.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/Duan1/app/src/main/res/drawable/side_nav_bar.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/Duan1/app/src/main/res/drawable/xoa.xml" value="0.26205128205128203" />
         <entry key="..\:/Users/Admin/Documents/GitHub/Duan1/app/src/main/res/layout/activity_main.xml" value="0.1431159420289855" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/Duan1/app/src/main/res/layout/activity_navigation_drawer.xml" value="0.1" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/Duan1/app/src/main/res/layout/custom_rv_main.xml" value="0.24320652173913043" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/Duan1/app/src/main/res/layout/layout_fragment_hangxe.xml" value="0.24320652173913043" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/Duan1/app/src/main/res/layout/layout_fragment_hoadon.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/Duan1/app/src/main/res/layout/layout_fragment_hoadonchitiet.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/Duan1/app/src/main/res/layout/layout_fragment_thanhtoan.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/Duan1/app/src/main/res/layout/layout_fragment_xe.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/Duan1/app/src/main/res/layout/layout_header_drawer.xml" value="0.24320652173913043" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/Duan1/app/src/main/res/layout/layout_item_hangxe.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/Duan1/app/src/main/res/layout/layout_item_hoadon.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/Duan1/app/src/main/res/layout/layout_item_hoadonchitiet.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/Duan1/app/src/main/res/layout/layout_item_spinner.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/Duan1/app/src/main/res/layout/layout_item_thanhtoan.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/Duan1/app/src/main/res/layout/layout_item_xe.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/Duan1/app/src/main/res/layout/layout_them_hangxe_fragment.xml" value="0.2" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/Duan1/app/src/main/res/layout/layout_them_hoadon_fragment.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/Duan1/app/src/main/res/layout/layout_them_xe_fragment.xml" value="0.2" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/Duan1/app/src/main/res/layout/layout_toolbar.xml" value="0.24320652173913043" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/Duan1/app/src/main/res/menu/menu_navigation_drawer.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/Documents/GitHub/Duan1/app/src/main/res/menu/menu_pop_up.xml" value="0.25" />
       </map>
     </option>
   </component>

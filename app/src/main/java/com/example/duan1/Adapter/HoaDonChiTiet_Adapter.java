@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -54,7 +55,7 @@ public class HoaDonChiTiet_Adapter  extends RecyclerView.Adapter<HoaDonChiTiet_A
         ImageView ivXe = holder.getIv_xe();
         TextView tvPrice = holder.getTv_price();
         TextView tvTotal = holder.getTv_total();
-        Button btnDelete = holder.getBtn_delete();
+        ImageButton btnDelete = holder.getBtn_delete();
 
         //lấy ảnh,tên,giá từ bảng xe theo id
         XeDAO dao = new XeDAO(context);
@@ -69,10 +70,10 @@ public class HoaDonChiTiet_Adapter  extends RecyclerView.Adapter<HoaDonChiTiet_A
         tvNameXe.setText(name);
         //Giá xe
         Double price = xe.getPrice();
-        tvPrice.setText("Giá: "+price);
+        tvPrice.setText("Rp. "+price);
         Integer sl = hoaDonChiTiet.getAmount();
-        tvTotal.setText("Tổng Tiền: "+price * sl);
-        tvAmount.setText(sl+"");
+        tvTotal.setText(""+price * sl);
+        tvAmount.setText("x"+sl);
 
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,7 +99,7 @@ public class HoaDonChiTiet_Adapter  extends RecyclerView.Adapter<HoaDonChiTiet_A
         private final TextView tv_amount;
         private final TextView tv_price;
         private final TextView tv_total;
-        private final Button btn_delete;
+        private final ImageButton btn_delete;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -122,7 +123,7 @@ public class HoaDonChiTiet_Adapter  extends RecyclerView.Adapter<HoaDonChiTiet_A
             return tv_amount;
         }
 
-        public Button getBtn_delete() {
+        public ImageButton getBtn_delete() {
             return btn_delete;
         }
 

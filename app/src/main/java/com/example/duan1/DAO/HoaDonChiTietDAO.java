@@ -140,12 +140,11 @@ public class HoaDonChiTietDAO implements IHoaDonChiTietDAO{
         }
         return list;
     }
-
+    int amount;
     @Override
     public Integer sumBike(Integer id_xe) {
-        int amount = 0;
         SQLiteDatabase database = mydb.getReadableDatabase();
-        String sql =  "SELECT  MAXE,SUM(SOLUONG)  FROM HOADONCHITIET WHERE MAXE = ? GROUP BY MAXE";
+        String sql =  "SELECT  MAXE,SUM(SOLUONG)  FROM HOADONCHITIET  GROUP BY MAXE HAVING MAXE = ?";
         Cursor c = database.rawQuery(sql,new String[]{String.valueOf(id_xe)});
         try {
             if (c.moveToFirst()){
@@ -223,7 +222,7 @@ public class HoaDonChiTietDAO implements IHoaDonChiTietDAO{
         SQLiteDatabase database = mydb.getWritableDatabase();
         database.beginTransaction();
         try {
-            database.delete(BANG_HDCT,MA_HOADON_FK+ " = ?",new String[]{String.valueOf(maHD)});
+            database.delete(BANG_HDCT,MA_HDCT+ " = ?",new String[]{String.valueOf(maHD)});
             database.setTransactionSuccessful();
         }catch (Exception ex){
             Log.e("Delete HDCT id error", ex.getMessage());

@@ -6,9 +6,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:ignore="MissingClass"
     android:id="@+id/toolbar"
-    app:titleTextColor="@color/xanh"
+    app:titleTextColor="@color/black"
     app:titleMarginBottom="31dp"
     android:theme="@style/ThemeOverlay.AppCompat.DayNight.ActionBar"
    >
-
 </androidx.appcompat.widget.Toolbar>

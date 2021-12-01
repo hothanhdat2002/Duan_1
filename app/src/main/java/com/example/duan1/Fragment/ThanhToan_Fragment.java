@@ -5,10 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentResultListener;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,12 +30,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ThanhToan_Fragment extends Fragment {
+public class ThanhToan_Fragment extends Fragment  {
     public static final String TAG = ThanhToan_Fragment.class.getName();
     private RecyclerView rv;
     private ThanhToan_Adapter adapter;
     private ArrayList<HoaDonChiTiet> data;
-//    private Button btn_hoantat;
+    private Button btn_hoantat;
     @Override
     public void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,28 +54,31 @@ public class ThanhToan_Fragment extends Fragment {
         // lấy mã hóa đơn từ fragment hóa đơn chi tiết
         Integer id_hoadon = getArguments().getInt("id_hoadon");
         rv = view.findViewById(R.id.rv_sp_hdct);
-//        btn_hoantat = view.findViewById(R.id.btn_hoantat);
+        btn_hoantat = view.findViewById(R.id.btn_hoantat);
         data = (new HoaDonChiTietDAO(getContext()).getByIDSum(id_hoadon));
+
+
         adapter = new ThanhToan_Adapter(data,getContext());
         rv.setAdapter(adapter);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         rv.setLayoutManager(layoutManager);
 
-//        btn_hoantat.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                HoaDonChiTietDAO dao = new HoaDonChiTietDAO(getContext());
-//                HoaDonDAO hoaDondao = new HoaDonDAO(getContext());
+        btn_hoantat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                HoaDonChiTietDAO dao = new HoaDonChiTietDAO(getContext());
+                HoaDonDAO hoaDondao = new HoaDonDAO(getContext());
 //                dao.deleteByID(id_hoadon);
 //                hoaDondao.delete(id_hoadon);
-//
-//                FragmentTransaction fragmentTransaction1 = getActivity().getSupportFragmentManager().beginTransaction();
-//                fragmentTransaction1.replace(R.id.my_frame_layout, new HoaDon_Fragment());
-//                fragmentTransaction1.addToBackStack(null);
-//                fragmentTransaction1.commit();
-//
-//            }
-//        });
+
+                FragmentTransaction fragmentTransaction1 = getActivity().getSupportFragmentManager().beginTransaction();
+                fragmentTransaction1.replace(R.id.my_frame_layout, new HoaDon_Fragment());
+                fragmentTransaction1.addToBackStack(null);
+                fragmentTransaction1.commit();
+
+            }
+        });
     }
+
 
 }

@@ -18,6 +18,9 @@ import android.view.MenuItem;
 import com.example.duan1.Fragment.HangXe_Fragment;
 import com.example.duan1.Fragment.HoaDonChiTiet_Fragment;
 import com.example.duan1.Fragment.HoaDon_Fragment;
+import com.example.duan1.Fragment.Home_Fragment;
+import com.example.duan1.Fragment.Revenue_Fragment;
+import com.example.duan1.Fragment.Top10_Fragment;
 import com.example.duan1.Fragment.Xe_Fragment;
 import com.google.android.material.navigation.NavigationView;
 
@@ -39,7 +42,7 @@ public class Navigation_Drawer extends AppCompatActivity {
 
         //show icon menu
 //        drawerToggle.setDrawerIndicatorEnabled(true);
-        drawerToggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.xanh));
+        drawerToggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.black));
 
         drawerToggle.syncState();
         drawerLayout.addDrawerListener(drawerToggle);
@@ -53,7 +56,7 @@ public class Navigation_Drawer extends AppCompatActivity {
         //hàm set layout
 
         if (savedInstanceState == null) {
-            Class FragmentClass = HangXe_Fragment.class;
+            Class FragmentClass = Home_Fragment.class;
 
             androidx.fragment.app.Fragment fragment = null;
             try {
@@ -62,7 +65,7 @@ public class Navigation_Drawer extends AppCompatActivity {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            navigationView.getMenu().getItem(3).setChecked(true);
+            navigationView.getMenu().getItem(0).setChecked(true);
 
             FragmentTransaction transaction= getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.my_frame_layout, fragment);
@@ -93,6 +96,9 @@ public class Navigation_Drawer extends AppCompatActivity {
         Class fragmentClass;
 
         switch (item.getItemId()){
+            case R.id.id_1:
+                fragmentClass = Home_Fragment.class;
+                break;
             case R.id.id_2:
                 fragmentClass = HangXe_Fragment.class;
                 break;
@@ -102,11 +108,17 @@ public class Navigation_Drawer extends AppCompatActivity {
             case R.id.id_4:
                 fragmentClass = HoaDon_Fragment.class;
                 break;
+            case R.id.id_5:
+                fragmentClass = Revenue_Fragment.class;
+                break;
+            case R.id.id_6:
+                fragmentClass = Top10_Fragment.class;
+                break;
             case R.id.id_8:
                 finish();
                 return;
             default:
-                fragmentClass = HangXe_Fragment.class;
+                fragmentClass = Home_Fragment.class;
                 break;
         }
         try {

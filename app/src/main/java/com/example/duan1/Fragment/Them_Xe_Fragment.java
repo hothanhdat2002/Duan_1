@@ -49,8 +49,8 @@ import java.util.List;
 import petrov.kristiyan.colorpicker.ColorPicker;
 
 public class Them_Xe_Fragment extends DialogFragment implements FragmentResultListener {
-    Button btn_choose_color,btn_choose_xe,btn_add,btn_cancel;
-    ImageButton ib_giam,ib_tang;
+    Button btn_choose_xe,btn_add,btn_cancel;
+    ImageButton ib_giam,ib_tang,btn_choose_color;
     ImageView iv_xe;
     EditText et_tenxe,et_giaxe,et_khoiluong,et_vantoc,et_thetich,et_nhienlieu,et_dongco;
     TextView tv_value_amount;
@@ -178,7 +178,7 @@ public class Them_Xe_Fragment extends DialogFragment implements FragmentResultLi
             et_thetich.setText("");
             et_nhienlieu.setText("");
             et_vantoc.setText("");
-            iv_xe.setImageResource(R.drawable.ducati_logo);
+            iv_xe.setImageResource(R.drawable.kawasaki);
         }else{
             et_tenxe.setText(name);
             et_giaxe.setText(price+"");
@@ -260,12 +260,13 @@ public class Them_Xe_Fragment extends DialogFragment implements FragmentResultLi
         ArrayList<String> colors = new ArrayList<>();
         colors.add("#FFFFFF");
         colors.add("#000000");
-        colors.add("#DD0000"); // màu đỏ
-        colors.add("#00CCFF");  //xanh dương
-        colors.add("#FF99CC");  // màu hồng
-        colors.add("#009900");  // màu xanh lục
-        colors.add("#F4A460");  // màu cam
+        colors.add("#FA3F3E"); // màu đỏ
+        colors.add("#7689FF");  //xanh dương
+        colors.add("#DC6368");  // màu hồng
         colors.add("#FFC125");  //màu vàng
+        colors.add("#C4C4C4");  //xám
+        colors.add("#ED9E66");  // màu cam
+        colors.add("#8FFF7B"); // màu xanh lục
         colorPicker.setColors(colors)
                 .setColumns(5)
                 .setRoundColorButton(true)
@@ -276,7 +277,6 @@ public class Them_Xe_Fragment extends DialogFragment implements FragmentResultLi
                         if (color!=0) {
                             layout_color.setBackgroundColor(color);
                             data_color = color;
-                            Toast.makeText(getContext(), "Màu: " + data_color, Toast.LENGTH_SHORT).show();
                         }else {
                             data_color = -16777216;  // default là màu đen
                             layout_color.setBackgroundColor(data_color);

@@ -3,20 +3,41 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/custom_dialog"
     android:layout_height="match_parent">
-
-    <EditText
-        android:id="@+id/et_tenkhachhang"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/tieude"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="Tên khách hàng"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
+        android:background="@drawable/custom_tieude"
+        android:fontFamily="@font/argentum_regular"
+        android:gravity="center"
+        android:padding="12dp"
+        android:text="CUSTOMER"
+        android:textColor="@color/white"
+        android:textSize="17dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+    <EditText
+        android:id="@+id/et_tenkhachhang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/custom_et"
+        android:ems="10"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="18dp"
+        android:fontFamily="@font/poppinregular"
+        android:hint="Name"
+        android:paddingLeft="20dp"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tieude" />
 
     <LinearLayout
         android:id="@+id/layout_button"
@@ -36,8 +57,8 @@
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
             android:background="@drawable/custom_button_dialog_cancel"
-            android:fontFamily="@font/argentum_regular"
-            android:text="Thoát"
+            android:fontFamily="@font/poppinregular"
+            android:text="Cancel"
             android:textAllCaps="false"
             android:textColor="#787878"
             android:textSize="16dp" />
@@ -48,8 +69,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/custom_button_dialog_add"
-            android:fontFamily="@font/argentum_regular"
-            android:text="Lưu"
+            android:fontFamily="@font/poppinregular"
+            android:text="Save"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="16dp"
@@ -63,10 +84,12 @@
         android:id="@+id/tv_created"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="28dp"
-        android:text="Ngày tháng "
-        android:textSize="20dp"
+        android:text="Date"
+        android:fontFamily="@font/poppinregular"
+        android:textSize="18dp"
+        android:backgroundTint="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sp_admin" />
 
@@ -75,8 +98,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
-        android:text="Hiển thị "
-        android:textSize="20dp"
+        android:drawableStart="@drawable/arrow_down"
+        android:textSize="18dp"
+        android:backgroundTint="@color/black"
         app:layout_constraintStart_toEndOf="@+id/tv_created"
         app:layout_constraintTop_toTopOf="@+id/tv_created" />
 
@@ -84,7 +108,7 @@
         android:id="@+id/sp_admin"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="128dp"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

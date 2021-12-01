@@ -4,94 +4,120 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="150dp"
-    android:paddingRight="15dp"
-    android:paddingLeft="15dp"
-    android:paddingTop="10dp"
-    android:background="@drawable/custom_rv_hdct"
-    android:paddingBottom="10dp"
-    android:layout_marginTop="22dp">
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView2"
-            android:layout_width="150dp"
-            android:layout_height="100dp"
-            app:cardCornerRadius="15dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+    android:paddingRight="12dp"
+    android:paddingLeft="12dp"
+    android:paddingTop="5dp"
+    android:background="@color/white"
+    android:layout_marginTop="5dp"
+    >
 
-            <ImageView
-                android:id="@+id/iv_hdct_anhxe"
-                android:layout_width="150dp"
-                android:layout_height="100dp"
-                android:layout_weight="0"
-                tools:srcCompat="@tools:sample/avatars" />
-        </androidx.cardview.widget.CardView>
+    <ImageView
+        android:id="@+id/iv_hdct_anhxe"
+        android:layout_width="120dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:layout_weight="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/tv_hdct_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="5dp"
         android:layout_toRightOf="@id/iv_hdct_anhxe"
         android:fontFamily="@font/poppinregular"
         android:text="TextView"
-        android:textSize="13dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/tv_hdct_name_xe"
+        android:textSize="14dp"
+        android:gravity="right"
+        app:layout_constraintBottom_toTopOf="@+id/tv_hdct_tongtien"
+        app:layout_constraintEnd_toEndOf="@+id/tv_hdct_tongtien"
         tools:ignore="NotSibling" />
 
     <TextView
-            android:id="@+id/tv_hdct_name_xe"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="7dp"
-            android:text="TextView"
-            android:textSize="17dp"
-            android:fontFamily="@font/poppinblack_medium"
-            android:letterSpacing="0.025"
-            android:textColor="@color/dennhat"
-            app:layout_constraintStart_toEndOf="@+id/cardView2"
-            app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/tv_hdct_name_xe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/popp_extra"
+        android:letterSpacing="0.15"
+        android:text="TextView"
+        android:textColor="@color/dennhat"
+        android:textSize="16dp"
+        app:layout_constraintStart_toEndOf="@+id/iv_hdct_anhxe"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_hdct_gia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="88dp"
-        android:fontFamily="@font/poppinblack_medium"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/poppinregular"
         android:letterSpacing="0.025"
         android:text="TextView"
         android:textColor="@color/dennhat"
-        android:textSize="15dp"
-        app:layout_constraintStart_toEndOf="@+id/cardView2"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="13dp"
+        app:layout_constraintStart_toStartOf="@+id/tv_hdct_name_xe"
+        app:layout_constraintTop_toBottomOf="@+id/tv_hdct_name_xe" />
 
     <TextView
         android:id="@+id/tv_hdct_tongtien"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="104dp"
-        android:layout_marginTop="100dp"
-        android:fontFamily="@font/poppinblack_medium"
+        android:fontFamily="@font/popp_semol"
         android:letterSpacing="0.025"
         android:text="TextView"
+        android:layout_marginBottom="17dp"
         android:textColor="@color/dennhat"
-        android:textSize="14dp"
-        app:layout_constraintStart_toEndOf="@+id/cardView2"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="14.5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <Button
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/poppinregular"
+        android:letterSpacing="0.025"
+        android:text="Total: "
+        android:textColor="@color/dennhat"
+        android:textSize="14.5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_hdct_tongtien"
+        app:layout_constraintEnd_toStartOf="@+id/tv_hdct_tongtien" />
+
+    <ImageButton
         android:id="@+id/btn_delete_hdct"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="17dp"
+        android:layout_height="20dp"
         android:layout_marginTop="4dp"
-        android:layout_marginEnd="4dp"
-        android:drawableStart="@drawable/xoa"
+        android:backgroundTint="@color/white"
+        android:src="@drawable/xoa"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="SpeakableTextPresentCheck" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="0.087mm"
+        android:layout_marginBottom="0dp"
+        android:background="@color/mauxanh"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_hdct_anhxe"
+        app:layout_constraintEnd_toEndOf="@+id/iv_hdct_anhxe"
+        app:layout_constraintStart_toStartOf="@+id/iv_hdct_anhxe"
+        app:srcCompat="@drawable/bongxe" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

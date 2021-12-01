@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -69,8 +70,8 @@ public class HoaDon_Adapter extends RecyclerView.Adapter<HoaDon_Adapter.ViewHold
         TextView tvName_Customer = holder.getTv_name_customer();
         TextView tvDate = holder.getTv_date();
         TextView tvName_Admin = holder.getTv_name_admin();
-        Button btn_update = holder.getBtn_update_hoadon();
-        Button btn_delete = holder.getBtn_delete_hoadon();
+        ImageButton btn_update = holder.getBtn_update_hoadon();
+        ImageButton btn_delete = holder.getBtn_delete_hoadon();
 
         tvName_Customer.setText(hoaDon.getName_customer());
         //lấy tên admin theo id
@@ -113,8 +114,8 @@ public class HoaDon_Adapter extends RecyclerView.Adapter<HoaDon_Adapter.ViewHold
         private final TextView tv_name_customer;
         private final TextView tv_date;
         private final TextView tv_name_admin;
-        private final Button btn_delete_hoadon;
-        private final Button btn_update_hoadon;
+        private final ImageButton btn_delete_hoadon;
+        private final ImageButton btn_update_hoadon;
         public IMyViewHolderClicks mListener_bill;
 
         public ViewHolder( View itemView,IMyViewHolderClicks _mlistener) {
@@ -148,11 +149,11 @@ public class HoaDon_Adapter extends RecyclerView.Adapter<HoaDon_Adapter.ViewHold
             return tv_name_admin;
         }
 
-        public Button getBtn_delete_hoadon() {
+        public ImageButton getBtn_delete_hoadon() {
             return btn_delete_hoadon;
         }
 
-        public Button getBtn_update_hoadon() {
+        public ImageButton getBtn_update_hoadon() {
             return btn_update_hoadon;
         }
     }

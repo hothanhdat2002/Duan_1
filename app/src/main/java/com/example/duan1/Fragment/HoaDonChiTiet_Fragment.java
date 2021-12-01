@@ -4,6 +4,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,16 +51,21 @@ public class HoaDonChiTiet_Fragment extends Fragment {
     private TextView tv_price;
     private Spinner sp_xe;
     private List<Xe> listXe;
+    private List<HoaDonChiTiet> listHDCT;
     private Xe_Item_Adapter item_adapter;
     private int count = 1;
     private int xe_id;
     private int id_hoadon;
+    int xeDaThem = 0;
     private Button btn_add,btn_save,btn_thanhtoan;
     private ArrayList<HoaDonChiTiet> data = new ArrayList<HoaDonChiTiet>();
     private HoaDonChiTiet_Adapter adapter;
+    HoaDonChiTietDAO dao = new HoaDonChiTietDAO(getContext());;
+
     @Override
     public void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
 
@@ -72,6 +78,9 @@ public class HoaDonChiTiet_Fragment extends Fragment {
     @Override
     public void onViewCreated(View view,  Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+
+
         ib_giamxe =  view.findViewById(R.id.ib_giamxe);
         ib_tangxe = view.findViewById(R.id.ib_tangxe);
         tv_amount_xe = view.findViewById(R.id.tv_amount_xe);
@@ -109,6 +118,7 @@ public class HoaDonChiTiet_Fragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Xe xe = (Xe) parent.getItemAtPosition(position);
                 xe_id = xe.getId();
+
             }
 
             @Override
@@ -143,32 +153,39 @@ public class HoaDonChiTiet_Fragment extends Fragment {
 //                // notifying adapter when new data added.
                 adapter.notifyItemInserted(data.size());
 
+
             }
         });
+        XeDAO xeDAO = new XeDAO(getContext());
+        listHDCT = (new HoaDonChiTietDAO(getContext()).get());
+//        Xe xe = (Xe) sp_xe.getSelectedItem();
+
+        //Lưu sản phẩm từ recycle view vào database HDCT
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                HoaDonChiTietDAO dao = new HoaDonChiTietDAO(getContext());
+//                int xeTrongKho = xeDAO.sumAmount(xe_id);
                 HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
-                Xe xe = (Xe) sp_xe.getSelectedItem();
-
-                int xeTrongkho = xe.getAmount();
-                int xeDaThem = dao.sumBike(xe_id);
-
-                for (int i = 0; i < data.size(); i++) {
-                    if (xeTrongkho >= data.get(i).getAmount() && xeTrongkho>=xeDaThem) {
-                        hoaDonChiTiet.setId(data.get(i).getId());
-                        hoaDonChiTiet.setId_hoadon(data.get(i).getId_hoadon());
-                        hoaDonChiTiet.setId_xe(data.get(i).getId_xe());
-                        hoaDonChiTiet.setAmount(data.get(i).getAmount());
-                        dao.insert(hoaDonChiTiet);
-                    } else {
-                        Toast.makeText(getContext(), "Số lượng xe không đủ", Toast.LENGTH_SHORT).show();
-                        break;
+                    for (int i = 0; i < data.size(); i++) {
+                        if (data.get(i).getId_xe() == xe_id) {
+                            hoaDonChiTiet.setId(data.get(i).getId());
+                            hoaDonChiTiet.setId_hoadon(data.get(i).getId_hoadon());
+                            hoaDonChiTiet.setId_xe(data.get(i).getId_xe());
+                            hoaDonChiTiet.setAmount(data.get(i).getAmount());
+                            for (int j = 0; j < data.size(); j++) {
+                                hoaDonChiTiet = data.get(j);
+                                dao.insert(hoaDonChiTiet);
+                            }
+//                            for (int k = 0; k < listHDCT.size(); k++) {
+//                                xeDAO.updateAmount(listHDCT.get(k).getId_xe(), listXe.get(k).getId());
+//                            }
+                        };
                     }
-                }
+                Toast.makeText(getContext(), "Product saved successfully", Toast.LENGTH_SHORT).show();
             }
         });
+
+
         btn_thanhtoan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -177,7 +194,6 @@ public class HoaDonChiTiet_Fragment extends Fragment {
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 Bundle bundle = new Bundle();
                 bundle.putInt("id_hoadon", id_hoadon);
-
                 // Set Fragmentclass Arguments
                 fragment.setArguments(bundle);
                 fragmentTransaction.replace(R.id.my_frame_layout, fragment);
@@ -187,6 +203,13 @@ public class HoaDonChiTiet_Fragment extends Fragment {
         });
 
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        xeDaThem = dao.sumBike(xe_id);
+    }
+
     private void buildRecyclerView() {
         // initializing our adapter class.
         adapter = new HoaDonChiTiet_Adapter(data, getContext());

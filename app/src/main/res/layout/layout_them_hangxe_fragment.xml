@@ -6,8 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/custom_dialog">
-
-
     <TextView
         android:id="@+id/tieude"
         android:layout_width="0dp"
@@ -16,11 +14,12 @@
         android:fontFamily="@font/argentum_regular"
         android:gravity="center"
         android:padding="12dp"
-        android:text="HÃNG XE"
+        android:text="CATEGORY"
         android:textColor="@color/white"
-        android:textSize="16dp"
+        android:textSize="17dp"
         app:layout_constraintBottom_toTopOf="@+id/iv_dialog_hangxe"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,23 +28,25 @@
         android:id="@+id/iv_dialog_hangxe"
         android:layout_width="140dp"
         android:layout_height="140dp"
-        android:layout_marginStart="132dp"
+        android:layout_marginStart="105dp"
         android:paddingLeft="20dp"
-        app:layout_constraintStart_toStartOf="@+id/tieude"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tieude" />
-
-
-
 
     <EditText
         android:id="@+id/et_ten_hangxe"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:background="@drawable/custom_et"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:paddingLeft="20dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:hint="Tên hãng"
+        android:hint="Name "
+        android:fontFamily="@font/poppinregular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,10 +54,11 @@
 
     <Button
         android:id="@+id/btn_choose_hangxe"
-        android:layout_width="50dp"
-
-        android:layout_height="wrap_content"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:paddingLeft="5dp"
         android:drawableStart="@drawable/sua"
+        android:backgroundTint="@color/mauxanhnhat"
         app:layout_constraintBottom_toBottomOf="@+id/iv_dialog_hangxe"
         app:layout_constraintEnd_toEndOf="@+id/iv_dialog_hangxe"
         tools:ignore="SpeakableTextPresentCheck" />
@@ -81,8 +83,8 @@
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
             android:background="@drawable/custom_button_dialog_cancel"
-            android:fontFamily="@font/argentum_regular"
-            android:text="Thoát"
+            android:fontFamily="@font/poppinregular"
+            android:text="Cancel"
             android:textAllCaps="false"
             android:textColor="#787878"
             android:textSize="16dp"
@@ -95,8 +97,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/custom_button_dialog_add"
-            android:fontFamily="@font/argentum_regular"
-            android:text="Lưu"
+            android:fontFamily="@font/poppinregular"
+            android:text="Save"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="16dp"

@@ -4,13 +4,18 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.duan1.Adapter.HangXe_Adapter;
+import com.example.duan1.Adapter.HangXe_Item_Adapter;
 import com.example.duan1.Adapter.Xe_Adapter;
 import com.example.duan1.DAO.HangXeDAO;
 import com.example.duan1.DAO.XeDAO;
@@ -26,6 +31,9 @@ public class Xe_Fragment extends Fragment {
     private FloatingActionButton fab;
     private List<Xe> data;
     private Xe_Adapter adapter;
+    private Spinner sp_hangxe;
+    private List<HangXe> listHang;
+    private HangXe_Item_Adapter item_adapter;
     @Override
     public void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,14 +60,21 @@ public class Xe_Fragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         fab = view.findViewById(R.id.fab_xe);
         rv = view.findViewById(R.id.rv_xe);
+        sp_hangxe = view.findViewById(R.id.sp_hangxe_search);
 
         data = (new XeDAO(getContext()).get());
 
         adapter = new Xe_Adapter(data,getContext());
         rv.setAdapter(adapter);
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
+        GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 2,GridLayoutManager.VERTICAL,false);
         rv.setLayoutManager(layoutManager);
+
+        //đổ dữ liệu lên spinner;
+        listHang = (new HangXeDAO(getContext()).get());
+        item_adapter = new HangXe_Item_Adapter(listHang,getContext());
+        sp_hangxe.setAdapter(item_adapter);
+        sp_hangxe.setSelection(0);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,6 +82,22 @@ public class Xe_Fragment extends Fragment {
                 Them_Xe_Fragment diaLogFragment = Them_Xe_Fragment.newInstance(-1,"", new byte[0],0,0,
                         0.0,0.0,0.0,0.0,0,"",0);
                 diaLogFragment.show(fragmentManager,"");
+            }
+        });
+
+        sp_hangxe.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                HangXe hangXe = (HangXe) parent.getItemAtPosition(position);
+//                int id_hang = hangXe.getId();
+//                XeDAO dao = new XeDAO(getContext());
+//                List<Xe> xe = dao.getByIDHang(id_hang);
+//                adapter.updateList(xe);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
     }

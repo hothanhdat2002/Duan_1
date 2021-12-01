@@ -4,32 +4,41 @@
     <item
         android:id="@+id/id_1"
         android:enabled="true"
-        android:title="Cửa hàng"
+        android:title="Home"
         />
     <item
         android:id="@+id/id_2"
         android:enabled="true"
 
-        android:title="Hãng xe"
+        android:title="Category"
         />
     <item
         android:id="@+id/id_3"
         android:enabled="true"
-        android:title="Xe"
+        android:title="Motorcycle"
         />
     <item
         android:id="@+id/id_4"
         android:enabled="true"
-        android:title="Hóa đơn"
+        android:title="Invoice"
         />
     <item android:title="">
         <menu>
             <group android:checkableBehavior="single">
-
+                <item
+                    android:id="@+id/id_5"
+                    android:enabled="true"
+                    android:title="Revenue"
+                    />
+                <item
+                    android:id="@+id/id_6"
+                    android:enabled="true"
+                    android:title="Top 10"
+                    />
                 <item
                     android:id="@+id/id_8"
                     android:enabled="true"
-                    android:title="Thoát"
+                    android:title="Exit"
                     />
             </group>
         </menu>

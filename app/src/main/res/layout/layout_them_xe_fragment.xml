@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/custom_dialog">
 
-
     <TextView
         android:id="@+id/tieude"
         android:layout_width="0dp"
@@ -16,7 +15,7 @@
         android:fontFamily="@font/argentum_regular"
         android:gravity="center"
         android:padding="12dp"
-        android:text="HÃNG XE"
+        android:text="MOTOCYCLE"
         android:textColor="@color/white"
         android:textSize="16dp"
         app:layout_constraintBottom_toTopOf="@+id/iv_dialog_xe"
@@ -29,110 +28,129 @@
         android:id="@+id/iv_dialog_xe"
         android:layout_width="140dp"
         android:layout_height="140dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginStart="-10dp"
+        android:layout_marginTop="20dp"
         android:paddingLeft="20dp"
         app:layout_constraintStart_toStartOf="@+id/tieude"
         app:layout_constraintTop_toBottomOf="@+id/tieude" />
 
     <EditText
         android:id="@+id/et_tenxe"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="Tên xe"
+        android:background="@drawable/custom_et"
+        android:paddingLeft="20dp"
+        android:textSize="13dp"
+        android:hint="Name"
+        android:fontFamily="@font/poppinregular"
         android:inputType="textPersonName"
-        android:minHeight="48dp"
+        android:minHeight="35dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tieude" />
 
     <EditText
         android:id="@+id/et_giaxe"
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/custom_et"
         android:ems="10"
-        android:hint="Giá xe"
+        android:fontFamily="@font/poppinregular"
+        android:hint="Price"
         android:inputType="textPersonName"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tieude" />
+        android:minHeight="35dp"
+        android:paddingLeft="20dp"
+        android:textSize="13dp"
+        app:layout_constraintStart_toStartOf="@+id/et_tenxe"
+        app:layout_constraintTop_toBottomOf="@+id/et_tenxe" />
 
     <EditText
         android:id="@+id/et_khoiluong"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="152dp"
-        android:layout_marginEnd="12dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/custom_et"
         android:ems="10"
-        android:hint="Khối lượng"
+        android:fontFamily="@font/poppinregular"
+        android:hint="Mass"
         android:inputType="textPersonName"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tieude" />
+        android:minHeight="35dp"
+        android:paddingLeft="20dp"
+        android:textSize="13dp"
+
+        app:layout_constraintStart_toStartOf="@+id/et_tenxe"
+        app:layout_constraintTop_toBottomOf="@+id/et_giaxe" />
 
     <EditText
         android:id="@+id/et_vantoc"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="348dp"
-        android:layout_marginEnd="224dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="31dp"
         android:ems="10"
-        android:hint="Vận tốc"
+        android:fontFamily="@font/poppinregular"
+        android:hint="Speed"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tieude" />
+        android:textSize="13.5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_choose_color" />
 
     <EditText
         android:id="@+id/et_thetich"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="348dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="Thể tích"
+        android:fontFamily="@font/poppinregular"
+        android:hint="Volume"
         android:inputType="textPersonName"
         android:minHeight="48dp"
+        android:textSize="13.5dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tieude" />
+        app:layout_constraintTop_toBottomOf="@+id/et_khoiluong" />
 
     <EditText
         android:id="@+id/et_nhienlieu"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="404dp"
-        android:layout_marginEnd="228dp"
+        android:layout_marginTop="32dp"
         android:ems="10"
-        android:hint="Nhiên liệu"
+        android:hint="Fuel"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tieude" />
+        android:fontFamily="@font/poppinregular"
+        android:textSize="13.5dp"
+        app:layout_constraintStart_toStartOf="@+id/et_vantoc"
+        app:layout_constraintTop_toBottomOf="@+id/et_vantoc" />
 
     <EditText
         android:id="@+id/et_dongco"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="404dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="32dp"
         android:ems="10"
-        android:hint="Động cơ"
+        android:hint="Engine"
+        android:fontFamily="@font/poppinregular"
+        android:textSize="13.5dp"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tieude" />
+        app:layout_constraintEnd_toEndOf="@+id/et_thetich"
+        app:layout_constraintTop_toBottomOf="@+id/et_thetich" />
 
     <Button
         android:id="@+id/btn_choose_xe"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:backgroundTint="@color/mauxanhnhat"
         android:drawableStart="@drawable/sua"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_dialog_xe"
+        android:paddingLeft="5dp"
         app:layout_constraintEnd_toEndOf="@+id/iv_dialog_xe"
+        app:layout_constraintTop_toTopOf="@+id/iv_dialog_xe"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <LinearLayout
@@ -140,13 +158,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="284dp"
+        android:layout_marginTop="15dp"
         android:orientation="horizontal"
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_choose_color">
+        app:layout_constraintTop_toBottomOf="@+id/sp_hangxe">
 
         <Button
             android:id="@+id/btn_cancel_xe"
@@ -155,8 +173,8 @@
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
             android:background="@drawable/custom_button_dialog_cancel"
-            android:fontFamily="@font/argentum_regular"
-            android:text="Thoát"
+            android:fontFamily="@font/poppinregular"
+            android:text="Cancel"
             android:textAllCaps="false"
             android:textColor="#787878"
             android:textSize="16dp"
@@ -169,8 +187,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/custom_button_dialog_add"
-            android:fontFamily="@font/argentum_regular"
-            android:text="Lưu"
+            android:fontFamily="@font/poppinregular"
+            android:text="Save"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="16dp"
@@ -180,79 +198,91 @@
 
     </LinearLayout>
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_choose_color"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Màu sắc"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="-20dp"
+        android:background="@color/white"
+        android:src="@drawable/palette"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.049"
+        app:layout_constraintHorizontal_bias="0.044"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_dialog_xe" />
 
-    <LinearLayout
-        android:id="@+id/layout_color"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="28dp"
-        android:background="#000000"
-        android:orientation="horizontal"
+    <androidx.cardview.widget.CardView
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="12dp"
+        app:cardCornerRadius="14dp"
         app:layout_constraintBottom_toBottomOf="@+id/btn_choose_color"
         app:layout_constraintStart_toEndOf="@+id/btn_choose_color"
         app:layout_constraintTop_toTopOf="@+id/btn_choose_color"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.48">
+
+        <LinearLayout
+            android:id="@+id/layout_color"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+
+            android:background="#000000"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_choose_color"
+            app:layout_constraintStart_toEndOf="@+id/btn_choose_color"
+            app:layout_constraintTop_toTopOf="@+id/btn_choose_color"
+            app:layout_constraintVertical_bias="0.45" />
+    </androidx.cardview.widget.CardView>
 
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
         android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/et_giaxe"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_dialog_xe">
+        app:layout_constraintTop_toTopOf="@+id/et_giaxe">
 
         <ImageButton
             android:id="@+id/ib_giam"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/custom_btn_giam"
             app:srcCompat="@drawable/dau_tru" />
 
         <TextView
             android:id="@+id/tv_value_amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="15dp"
+            android:fontFamily="@font/poppinregular"
             android:text="1"
-            android:textSize="30dp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageButton"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton"
-            app:layout_constraintHorizontal_bias="0.509"
-            app:layout_constraintStart_toEndOf="@+id/imageButton2"
-            app:layout_constraintTop_toTopOf="@+id/imageButton2" />
-
+            android:textSize="21dp" />
 
         <ImageButton
             android:id="@+id/ib_tang"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-
-            app:srcCompat="@drawable/add" />
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/custom_btn_tang"
+            app:srcCompat="@drawable/tang"
+            tools:ignore="SpeakableTextPresentCheck" />
 
     </LinearLayout>
 
     <Spinner
         android:id="@+id/sp_hangxe"
-        android:layout_width="409dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/custom_spinner"
+        android:backgroundTint="@color/mauxanhnhat"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_nhienlieu" />
 

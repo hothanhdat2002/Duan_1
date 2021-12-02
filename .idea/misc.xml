@@ -68,10 +68,17 @@
         <entry key="..\:/Users/Admin/Documents/GitHub/Duan1/app/src/main/res/layout/layout_toolbar.xml" value="0.24320652173913043" />
         <entry key="..\:/Users/Admin/Documents/GitHub/Duan1/app/src/main/res/menu/menu_navigation_drawer.xml" value="0.25" />
         <entry key="..\:/Users/Admin/Documents/GitHub/Duan1/app/src/main/res/menu/menu_pop_up.xml" value="0.25" />
+        <entry key="..\:/Users/nguye/AppData/Local/Android/Sdk/caches/transforms-3/b6e634f3a2b19c3aa3b9c136c94b8ea5/transformed/jetified-colorpicker-library-1.1.10/res/drawable/button.xml" value="0.19572368421052633" />
+        <entry key="..\:/Users/nguye/Downloads/Duan_1/app/src/main/res/drawable-v24/button.xml" value="0.19572368421052633" />
+        <entry key="..\:/Users/nguye/Downloads/Duan_1/app/src/main/res/drawable/button.xml" value="0.19572368421052633" />
+        <entry key="..\:/Users/nguye/Downloads/Duan_1/app/src/main/res/layout/activity_authentication.xml" value="0.1" />
+        <entry key="..\:/Users/nguye/Downloads/Duan_1/app/src/main/res/layout/activity_splash_screen.xml" value="0.1" />
+        <entry key="..\:/Users/nguye/Downloads/Duan_1/app/src/main/res/layout/fragment_login.xml" value="0.18552631578947368" />
+        <entry key="..\:/Users/nguye/Downloads/Duan_1/app/src/main/res/layout/fragment_signup.xml" value="0.14" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

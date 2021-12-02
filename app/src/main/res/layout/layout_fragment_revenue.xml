@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:paddingLeft="15dp"
     android:paddingRight="15dp"
     android:paddingTop="20dp"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
     <Button
         android:id="@+id/btn_search"
@@ -47,8 +46,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="170dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/custom_rv_bill"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -89,7 +88,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="170dp"
-        android:layout_height="100dp"
+        android:layout_height="140dp"
         android:background="@drawable/custom_rv_bill"
         app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent">
@@ -127,5 +126,4 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_createdEnd"
             tools:ignore="DuplicateIds" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,25 +1,25 @@
-package com.example.duan1.Fragment;
+package com.example.duan1.Activities;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
+import com.example.duan1.Fragment.Home_Fragment;
+import com.example.duan1.Navigation_Drawer;
 import com.example.duan1.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -29,34 +29,33 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class Login_Fragment extends Fragment {
+public class Login_Activity extends AppCompatActivity {
     TextInputLayout email, password;
     TextView forgotPassword, jumpToSignup;
     Button btnLogin;
     ImageView facebook, google;
 
     FirebaseAuth auth;
-
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_login, container, false);
-    }
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_login);
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
 
         auth = FirebaseAuth.getInstance();
 
         //hooks
-        hooks(view);
+        email = findViewById(R.id.email);
+        password = findViewById(R.id.password);
+        forgotPassword = findViewById(R.id.forgotPassword);
+        btnLogin = findViewById(R.id.btnLogin);
+        jumpToSignup = findViewById(R.id.jumpToSignup);
 
         //login event
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                login(view);
+                login(v);
             }
         });
 
@@ -64,7 +63,7 @@ public class Login_Fragment extends Fragment {
         jumpToSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                jumpToSignup(view);
+                jumpToSignup(v);
             }
         });
 
@@ -72,34 +71,32 @@ public class Login_Fragment extends Fragment {
         forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                forgotPassword(view);
+                forgotPassword(v);
             }
         });
     }
-
-    //login method
     public void login(View view) {
         String aEmail = email.getEditText().getText().toString();
         String aPassword = password.getEditText().getText().toString();
 
         if (TextUtils.isEmpty(aEmail)) {
-            Toast.makeText(getContext(), "Enter email address", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Login_Activity.this, "Enter email address", Toast.LENGTH_SHORT).show();
             return;
         }
         if (TextUtils.isEmpty(aPassword)) {
-            Toast.makeText(getContext(), "Enter password", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Login_Activity.this, "Enter password", Toast.LENGTH_SHORT).show();
             return;
         }
 
         auth.signInWithEmailAndPassword(aEmail, aPassword)
-                .addOnCompleteListener((Activity) getContext(), new OnCompleteListener<AuthResult>() {
+                .addOnCompleteListener((Activity) this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(getContext(), "Successfully", Toast.LENGTH_SHORT).show();
-                            replaceFragment(new Home_Fragment());
+                            Toast.makeText(Login_Activity.this, "Successfully", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(Login_Activity.this, Navigation_Drawer.class));
                         } else {
-                            Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Login_Activity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -107,7 +104,7 @@ public class Login_Fragment extends Fragment {
 
     //jump to signup method
     public void jumpToSignup(View view) {
-        replaceFragment(new Signup_Fragment());
+        startActivity(new Intent(Login_Activity.this, SignUp_Activity.class));
     }
 
     //forgot password method
@@ -125,36 +122,25 @@ public class Login_Fragment extends Fragment {
                 auth.sendPasswordResetEmail(mail).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
-                        Toast.makeText(getContext(), "Reset link sent to your email", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Login_Activity.this, "Reset link sent to your email", Toast.LENGTH_SHORT).show();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Login_Activity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
         });
+
         passwordReset.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
             }
         });
+        passwordReset.show();
     }
 
-    //replace fragment method
-    public void replaceFragment(Fragment fragment) {
-        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_authentication, fragment).addToBackStack(null).commit();
-    }
 
-    //hooks
-    public void hooks(View view) {
-        email = view.findViewById(R.id.email);
-        password = view.findViewById(R.id.password);
-        forgotPassword = view.findViewById(R.id.forgotPassword);
-        btnLogin = view.findViewById(R.id.btnLogin);
-        jumpToSignup = view.findViewById(R.id.jumpToSignup);
-    }
 }

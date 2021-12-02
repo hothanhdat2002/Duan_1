@@ -45,6 +45,8 @@ public class Revenue_Fragment extends Fragment implements DatePickerDialog.OnDat
         tv_createdValueEnd = view.findViewById(R.id.tv_createdValueEnd);
         btn_search = view.findViewById(R.id.btn_search);
         tv_revenue =view.findViewById(R.id.tv_revenue);
+
+
         //ngày bắt đầu
         tv_createdStart.setOnClickListener(new View.OnClickListener() {
             @Override

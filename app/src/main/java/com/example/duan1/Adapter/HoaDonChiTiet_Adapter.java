@@ -80,14 +80,17 @@ public class HoaDonChiTiet_Adapter  extends RecyclerView.Adapter<HoaDonChiTiet_A
             public void onClick(View view) {
                 try {
                     data.remove(getItemViewType(position));
+                    tvTotal.setText(String.valueOf(0));
                     notifyItemRemoved(getItemViewType(position));
+                    notifyItemChanged(position);
+                    notifyItemInserted(data.size());
+
                 }catch (Exception ex){
                     Log.d("===>",ex.getMessage());
                 }
             }
         });
     }
-
     @Override
     public int getItemCount() {
         return data.size();

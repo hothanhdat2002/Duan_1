@@ -24,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/et_search_hangxe"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginLeft="5dp"
@@ -32,7 +32,7 @@
         android:background="@drawable/custom_et_search"
         android:drawableStart="@drawable/search"
         android:drawablePadding="10dp"
-        android:focusable="false"
+        android:focusable="true"
         android:paddingLeft="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.4"

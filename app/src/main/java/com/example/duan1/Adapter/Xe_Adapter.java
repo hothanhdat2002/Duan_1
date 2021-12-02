@@ -11,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
@@ -27,6 +29,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.duan1.DAO.HangXeDAO;
 import com.example.duan1.DAO.XeDAO;
+import com.example.duan1.Fragment.Detail_Xe_Fragment;
 import com.example.duan1.Fragment.HoaDonChiTiet_Fragment;
 import com.example.duan1.Fragment.Them_HangXe_Fragment;
 import com.example.duan1.Fragment.Them_Xe_Fragment;
@@ -35,14 +38,18 @@ import com.example.duan1.Model.HoaDon;
 import com.example.duan1.Model.Xe;
 import com.example.duan1.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class Xe_Adapter extends RecyclerView.Adapter<Xe_Adapter.ViewHolder>{
+public class Xe_Adapter extends RecyclerView.Adapter<Xe_Adapter.ViewHolder> implements Filterable {
     private List<Xe> data;
     private Context context;
+    List<Xe> arrSortXe;
+    private Filter XeFilter;
     public Xe_Adapter(List<Xe> _data, Context _context){
         this.data = _data;
         this.context = _context;
+        this.arrSortXe = data;
     }
     @Override
     public Xe_Adapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -81,7 +88,7 @@ public class Xe_Adapter extends RecyclerView.Adapter<Xe_Adapter.ViewHolder>{
         }, new ViewHolder.IMyViewHolderClicks(){
             @Override
             public void onItemClick(View caller) {
-                Fragment fragment = new HoaDonChiTiet_Fragment();
+                Fragment fragment = new Detail_Xe_Fragment();
                 FragmentManager fragmentManager = ((AppCompatActivity)context).getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 Bundle bundle = new Bundle();
@@ -92,7 +99,7 @@ public class Xe_Adapter extends RecyclerView.Adapter<Xe_Adapter.ViewHolder>{
                 // Set Fragmentclass Arguments
                 fragment.setArguments(bundle);
                 fragmentTransaction.replace(R.id.my_frame_layout, fragment);
-                fragmentTransaction.addToBackStack(HoaDonChiTiet_Fragment.TAG);
+                fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }
 
@@ -138,6 +145,13 @@ public class Xe_Adapter extends RecyclerView.Adapter<Xe_Adapter.ViewHolder>{
     @Override
     public int getItemCount() {
         return data.size();
+    }
+
+    @Override
+    public Filter getFilter() {
+        if (XeFilter == null)
+            XeFilter = new Xe_Adapter.CustomFilter();
+        return XeFilter;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnLongClickListener,View.OnClickListener{
@@ -208,5 +222,44 @@ public class Xe_Adapter extends RecyclerView.Adapter<Xe_Adapter.ViewHolder>{
         data.clear();
         data.addAll(_data);
         notifyDataSetChanged();
+    }
+    public void resetData() {
+        data = arrSortXe;
+    }
+    public void changeDataset(ArrayList<Xe> items){
+        this.data = items;
+        notifyDataSetChanged();
+    }
+
+    private class CustomFilter extends Filter {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            FilterResults results = new FilterResults();
+            // We implement here the filter logic
+            if (constraint == null || constraint.length() == 0) {
+                results.values = arrSortXe;
+                results.count = arrSortXe.size();
+            }else{
+                List<Xe> lsXe = new ArrayList<Xe>();
+                for (Xe p : data) {
+                    if
+                    (p.getName().toUpperCase().startsWith(constraint.toString().toUpperCase()))
+                        lsXe.add(p);
+                }
+                results.values = lsXe;
+                results.count = lsXe.size();
+            }
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+            if (filterResults.count == 0)
+                notifyDataSetChanged();
+            else {
+                data = (List<Xe>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        }
     }
 }

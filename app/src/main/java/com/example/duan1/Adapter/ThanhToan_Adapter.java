@@ -79,7 +79,11 @@ public class ThanhToan_Adapter extends RecyclerView.Adapter<ThanhToan_Adapter.Vi
             @Override
             public void onClick(View view) {
                 HoaDonChiTietDAO dao = new HoaDonChiTietDAO(context);
-                dao.deleteByID(hoaDonChiTiet.getId());
+                for (int i = 0;i< data.size();i++){
+                    if (data.get(i).getId_xe()==hoaDonChiTiet.getId_xe()) {
+                        dao.deleteByID(hoaDonChiTiet.getId_xe());
+                    }
+                }
                 List<HoaDonChiTiet> _data = dao.getByIDSum(hoaDonChiTiet.getId_hoadon());
                 updateList(_data);
             }

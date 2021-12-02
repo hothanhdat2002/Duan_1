@@ -8,23 +8,80 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_sp_hdct"
         android:layout_width="match_parent"
-        android:layout_height="640dp"
+        android:layout_height="550dp"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btn_hoantat"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="Done"
-        android:textColor="@color/white"
-        android:background="@drawable/custom_btn_save"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="135dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+
+        android:background="@drawable/custom_item_hangxe"
+        android:layout_marginBottom="28dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/btn_hoantat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/custom_btn_save"
+            android:text="Check out"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:fontFamily="@font/poppinregular"
+            android:textAllCaps="false"
+            android:textSize="16dp"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/popp"
+            android:text="Sub Total: "
+            android:layout_marginEnd="5dp"
+            android:textColor="@color/dennhat"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toStartOf="@+id/tv_total"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="70dp"
+            android:layout_marginBottom="-2dp"
+            android:fontFamily="@font/popp"
+            android:gravity="center"
+            android:text="-"
+            android:textColor="@color/mauxanh"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView7"
+            app:layout_constraintEnd_toStartOf="@+id/btn_refresh_total" />
+
+        <ImageButton
+            android:id="@+id/btn_refresh_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:layout_marginEnd="-10dp"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/refresh"
+            app:layout_constraintBottom_toTopOf="@+id/btn_hoantat"
+            app:layout_constraintEnd_toEndOf="@+id/btn_hoantat" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

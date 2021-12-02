@@ -6,7 +6,6 @@ public class HoaDon {
     private int id;
     private String name_customer;
     private Date date;
-    private int id_admin;
 
     public HoaDon() {
     }
@@ -15,7 +14,7 @@ public class HoaDon {
         this.id = id;
         this.name_customer = name_customer;
         this.date = date;
-        this.id_admin = id_admin;
+
     }
 
     public int getId() {
@@ -42,11 +41,4 @@ public class HoaDon {
         this.date = date;
     }
 
-    public int getId_admin() {
-        return id_admin;
-    }
-
-    public void setId_admin(int id_admin) {
-        this.id_admin = id_admin;
-    }
 }

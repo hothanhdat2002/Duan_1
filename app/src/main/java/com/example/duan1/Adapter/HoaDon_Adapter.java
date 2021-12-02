@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -28,14 +30,18 @@ import com.example.duan1.Model.HoaDon;
 import com.example.duan1.R;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
-public class HoaDon_Adapter extends RecyclerView.Adapter<HoaDon_Adapter.ViewHolder>{
+public class HoaDon_Adapter extends RecyclerView.Adapter<HoaDon_Adapter.ViewHolder> implements Filterable {
     private List<HoaDon> data;
     private Context context;
+    List<HoaDon> arrSortHoaDon;
+    private Filter HoaDonFilter;
     public HoaDon_Adapter(List<HoaDon> _data, Context _context){
         this.data = _data;
         this.context = _context;
+        this.arrSortHoaDon = data;
     }
     @Override
     public ViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
@@ -69,16 +75,11 @@ public class HoaDon_Adapter extends RecyclerView.Adapter<HoaDon_Adapter.ViewHold
         HoaDon hoaDon = data.get(position);
         TextView tvName_Customer = holder.getTv_name_customer();
         TextView tvDate = holder.getTv_date();
-        TextView tvName_Admin = holder.getTv_name_admin();
+
         ImageButton btn_update = holder.getBtn_update_hoadon();
         ImageButton btn_delete = holder.getBtn_delete_hoadon();
 
         tvName_Customer.setText(hoaDon.getName_customer());
-        //lấy tên admin theo id
-        AdminDAO dao = new AdminDAO(context);
-        int id_admin = hoaDon.getId_admin();
-        Admin admin = dao.getByID(id_admin);
-        tvName_Admin.setText(admin.getName());
 
         //đinh dạng ngày ( Date -> dd - MM - yyyy )
         SimpleDateFormat sdf = new SimpleDateFormat("dd - MM - yyyy");
@@ -99,7 +100,7 @@ public class HoaDon_Adapter extends RecyclerView.Adapter<HoaDon_Adapter.ViewHold
                 FragmentManager fragmentManager = ((AppCompatActivity)context).getSupportFragmentManager();
                 //new Instance Update
                 Them_HoaDon_Fragment diaLogFragment = Them_HoaDon_Fragment.newInstance(hoaDon.getId(),
-                        hoaDon.getName_customer(),hoaDon.getDate().getTime(), hoaDon.getId_admin() );
+                        hoaDon.getName_customer(),hoaDon.getDate().getTime());
                 diaLogFragment.show(fragmentManager,"");
             }
         });
@@ -110,10 +111,17 @@ public class HoaDon_Adapter extends RecyclerView.Adapter<HoaDon_Adapter.ViewHold
         return data.size();
     }
 
+    @Override
+    public Filter getFilter() {
+        if (HoaDonFilter == null)
+            HoaDonFilter = new HoaDon_Adapter.CustomFilter();
+        return HoaDonFilter;
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private final TextView tv_name_customer;
         private final TextView tv_date;
-        private final TextView tv_name_admin;
+
         private final ImageButton btn_delete_hoadon;
         private final ImageButton btn_update_hoadon;
         public IMyViewHolderClicks mListener_bill;
@@ -122,7 +130,7 @@ public class HoaDon_Adapter extends RecyclerView.Adapter<HoaDon_Adapter.ViewHold
             super(itemView);
             tv_name_customer = itemView.findViewById(R.id.tv_name_customer);
             tv_date = itemView.findViewById(R.id.tv_date);
-            tv_name_admin = itemView.findViewById(R.id.tv_name_admin);
+
             btn_delete_hoadon = itemView.findViewById(R.id.btn_delete_hoadon);
             btn_update_hoadon = itemView.findViewById(R.id.btn_update_hoadon);
 
@@ -145,9 +153,6 @@ public class HoaDon_Adapter extends RecyclerView.Adapter<HoaDon_Adapter.ViewHold
             return tv_date;
         }
 
-        public TextView getTv_name_admin() {
-            return tv_name_admin;
-        }
 
         public ImageButton getBtn_delete_hoadon() {
             return btn_delete_hoadon;
@@ -161,5 +166,44 @@ public class HoaDon_Adapter extends RecyclerView.Adapter<HoaDon_Adapter.ViewHold
         data.clear();
         data.addAll(_data);
         notifyDataSetChanged();
+    }
+    public void resetData() {
+        data = arrSortHoaDon;
+    }
+    public void changeDataset(ArrayList<HoaDon> items){
+        this.data = items;
+        notifyDataSetChanged();
+    }
+
+    private class CustomFilter extends Filter {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            FilterResults results = new FilterResults();
+            // We implement here the filter logic
+            if (constraint == null || constraint.length() == 0) {
+                results.values = arrSortHoaDon;
+                results.count = arrSortHoaDon.size();
+            }else{
+                List<HoaDon> lsHang = new ArrayList<HoaDon>();
+                for (HoaDon p : data) {
+                    if
+                    (p.getName_customer().toUpperCase().startsWith(constraint.toString().toUpperCase()))
+                        lsHang.add(p);
+                }
+                results.values = lsHang;
+                results.count = lsHang.size();
+            }
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+            if (filterResults.count == 0)
+                notifyDataSetChanged();
+            else {
+                data = (List<HoaDon>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        }
     }
 }

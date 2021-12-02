@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
@@ -24,14 +26,18 @@ import com.example.duan1.Fragment.Them_HangXe_Fragment;
 import com.example.duan1.Model.HangXe;
 import com.example.duan1.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class HangXe_Adapter extends RecyclerView.Adapter<HangXe_Adapter.ViewHolder>{
+public class HangXe_Adapter extends RecyclerView.Adapter<HangXe_Adapter.ViewHolder> implements Filterable {
     private List<HangXe> data;
     private Context context;
+    List<HangXe> arrSortHangXe;
+    private Filter HangXeFilter;
     public HangXe_Adapter(List<HangXe> _data, Context _context){
         this.data = _data;
         this.context = _context;
+        this.arrSortHangXe = data;
     }
     @Override
     public HangXe_Adapter.ViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
@@ -93,6 +99,14 @@ public class HangXe_Adapter extends RecyclerView.Adapter<HangXe_Adapter.ViewHold
         return data.size();
     }
 
+    @Override
+    public Filter getFilter() {
+        if (HangXeFilter == null)
+            HangXeFilter = new CustomFilter();
+        return HangXeFilter;
+
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnLongClickListener{
         private final TextView tv_Name;
         private final ImageView iv_Logo;
@@ -124,10 +138,51 @@ public class HangXe_Adapter extends RecyclerView.Adapter<HangXe_Adapter.ViewHold
         public static interface IMyViewHolderLongClicks{
             public void onItemLongClick(View caller);
         }
+
     }
     public void updateList(List<HangXe> _data){
         data.clear();
         data.addAll(_data);
         notifyDataSetChanged();
     }
+    public void resetData() {
+        data = arrSortHangXe;
+    }
+    public void changeDataset(ArrayList<HangXe> items){
+        this.data = items;
+        notifyDataSetChanged();
+    }
+
+    private class CustomFilter extends Filter {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            FilterResults results = new FilterResults();
+            // We implement here the filter logic
+            if (constraint == null || constraint.length() == 0) {
+                results.values = arrSortHangXe;
+                results.count = arrSortHangXe.size();
+            }else{
+                List<HangXe> lsHang = new ArrayList<HangXe>();
+                for (HangXe p : data) {
+                    if
+                    (p.getName().toUpperCase().startsWith(constraint.toString().toUpperCase()))
+                        lsHang.add(p);
+                }
+                results.values = lsHang;
+                results.count = lsHang.size();
+            }
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+            if (filterResults.count == 0)
+                notifyDataSetChanged();
+            else {
+                data = (List<HangXe>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        }
+    }
+
 }

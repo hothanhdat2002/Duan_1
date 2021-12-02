@@ -62,7 +62,7 @@ public class Them_Xe_Fragment extends DialogFragment implements FragmentResultLi
     int data_color = -16777216; // mặc định màu xe là: đen
     private Integer hangxe_id;
     public static Them_Xe_Fragment newInstance(Integer id, String name,byte[] images,int color,
-                                               int amount, double price, double mass, double speed, double fuel, int volume, String engine, int idhangxe){
+                                               int amount, double price, int mass, int speed, double fuel, int volume, String engine, int idhangxe){
         Them_Xe_Fragment fragment = new Them_Xe_Fragment();
         Bundle bundle = new Bundle();
         bundle.putInt("id",id);
@@ -71,8 +71,8 @@ public class Them_Xe_Fragment extends DialogFragment implements FragmentResultLi
         bundle.putInt("color",color);
         bundle.putInt("amount",amount);
         bundle.putDouble("price",price);
-        bundle.putDouble("mass",mass);
-        bundle.putDouble("speed",speed);
+        bundle.putInt("mass",mass);
+        bundle.putInt("speed",speed);
         bundle.putDouble("fuel",fuel);
         bundle.putInt("volume",volume);
         bundle.putString("engine",engine);
@@ -150,8 +150,8 @@ public class Them_Xe_Fragment extends DialogFragment implements FragmentResultLi
         Integer color = getArguments().getInt("color",-1);
         Integer amount = getArguments().getInt("amount",-1);
         Double price = getArguments().getDouble("price",0);
-        Double mass = getArguments().getDouble("mass",0);
-        Double speed = getArguments().getDouble("speed",0);
+        Integer mass = getArguments().getInt("mass",0);
+        Integer speed = getArguments().getInt("speed",0);
         Double fuel = getArguments().getDouble("fuel",0);
         Integer volume = getArguments().getInt("volume",-1);
         String engine = getArguments().getString("engine","");
@@ -216,8 +216,8 @@ public class Them_Xe_Fragment extends DialogFragment implements FragmentResultLi
                 xe.setColor(data_color);
                 xe.setAmount(Integer.parseInt(amount));
                 xe.setPrice(Double.parseDouble(price));
-                xe.setMass(Double.parseDouble(mass));
-                xe.setSpeed(Double.parseDouble(speed));
+                xe.setMass(Integer.parseInt(mass));
+                xe.setSpeed(Integer.parseInt(speed));
                 xe.setVolume(Integer.parseInt(volume));
                 xe.setFuel(Double.parseDouble(fuel));
                 xe.setEngine(engine);
@@ -285,7 +285,6 @@ public class Them_Xe_Fragment extends DialogFragment implements FragmentResultLi
 
                     @Override
                     public void onCancel() {
-
                     }
                 }).show();
 

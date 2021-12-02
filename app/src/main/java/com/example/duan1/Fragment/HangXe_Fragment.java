@@ -1,9 +1,12 @@
 package com.example.duan1.Fragment;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 
 import androidx.fragment.app.Fragment;
@@ -25,6 +28,7 @@ public class HangXe_Fragment extends Fragment {
     private FloatingActionButton fab;
     private List<HangXe> data;
     private HangXe_Adapter adapter;
+    private EditText et_search;
     @Override
     public void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +56,7 @@ public class HangXe_Fragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         fab = view.findViewById(R.id.fab_hangxe);
         rv = view.findViewById(R.id.rv_hangxe);
+        et_search =  view.findViewById(R.id.et_search_hangxe);
         data =(new HangXeDAO(getContext()).get());
 
         adapter = new HangXe_Adapter(data,getContext());
@@ -59,6 +64,27 @@ public class HangXe_Fragment extends Fragment {
 
         GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 2,GridLayoutManager.VERTICAL,false);
         rv.setLayoutManager(layoutManager);
+        rv.setFilterTouchesWhenObscured(true);
+        //search
+        et_search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (count < before) {
+                    adapter.resetData();
+                }
+                adapter.getFilter().filter(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

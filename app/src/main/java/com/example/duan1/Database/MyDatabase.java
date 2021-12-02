@@ -38,8 +38,8 @@ public class MyDatabase extends SQLiteOpenHelper {
                 ""+MAUXE+" INTEGER NOT NULL," +
                 ""+SOLUONG+" INTEGER NOT NULL," +
                 ""+GIAXE+" REAL NOT NULL," +
-                ""+KHOILUONG+" REAL NOT NULL," +
-                ""+VANTOC+" REAL NOT NULL," +
+                ""+KHOILUONG+" INTEGER NOT NULL," +
+                ""+VANTOC+" INTEGER NOT NULL," +
                 ""+NHIENLIEU+" REAL NOT NULL," +
                 ""+THETICH+" INTEGER NOT NULL," +
                 ""+DONGCO+" TEXT NOT NULL," +
@@ -65,10 +65,7 @@ public class MyDatabase extends SQLiteOpenHelper {
         String createTableHoaDon = "CREATE TABLE IF NOT EXISTS " + BANG_HOADON+
                 "( "+MA_HOADON +" INTEGER PRIMARY KEY AUTOINCREMENT," +
                 ""+TENKHACHHANG+" TEXT NOT NULL," +
-                ""+NGAYTAO+" DATE NOT NULL," +
-                ""+MA_ADMIN_FK+" INTEGER NOT NULL," +
-                "FOREIGN KEY ( " +MA_ADMIN_FK+")" +
-                " REFERENCES "+BANG_ADMIN+"("+MA_ADMIN+") )";
+                ""+NGAYTAO+" DATE NOT NULL)";
         db.execSQL(createTableHoaDon);
 
         // Tao bang hóa đơn chi tiết

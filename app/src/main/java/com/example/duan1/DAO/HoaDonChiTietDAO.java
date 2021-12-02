@@ -222,7 +222,7 @@ public class HoaDonChiTietDAO implements IHoaDonChiTietDAO{
         SQLiteDatabase database = mydb.getWritableDatabase();
         database.beginTransaction();
         try {
-            database.delete(BANG_HDCT,MA_HDCT+ " = ?",new String[]{String.valueOf(maHD)});
+            database.delete(BANG_HDCT,MA_XE_FK+ " = ?",new String[]{String.valueOf(maHD)});
             database.setTransactionSuccessful();
         }catch (Exception ex){
             Log.e("Delete HDCT id error", ex.getMessage());

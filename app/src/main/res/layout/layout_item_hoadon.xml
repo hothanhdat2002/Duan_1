@@ -14,8 +14,8 @@
         android:id="@+id/tv_name_customer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="36dp"
         android:fontFamily="@font/popp"
         android:text="TextView"
         android:textAlignment="gravity"
@@ -35,18 +35,6 @@
         android:fontFamily="@font/poppinregular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_name_admin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/poppinlight"
-        android:text="TextView"
-        android:textSize="14.5dp"
-        app:layout_constraintStart_toEndOf="@+id/btn_delete_hoadon"
-        app:layout_constraintTop_toBottomOf="@+id/tv_name_customer" />
 
     <ImageButton
         android:id="@+id/btn_update_hoadon"

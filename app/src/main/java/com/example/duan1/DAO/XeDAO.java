@@ -65,8 +65,8 @@ public class XeDAO implements IXeDAO{
                     int color = c.getInt(c.getColumnIndex(MAUXE));
                     Integer amount = c.getInt(c.getColumnIndex(SOLUONG));
                     double price = c.getDouble(c.getColumnIndex(GIAXE));
-                    double mass = c.getDouble(c.getColumnIndex(KHOILUONG));
-                    double speed = c.getDouble(c.getColumnIndex(VANTOC));
+                    int mass = c.getInt(c.getColumnIndex(KHOILUONG));
+                    int speed = c.getInt(c.getColumnIndex(VANTOC));
                     double fuel = c.getDouble(c.getColumnIndex(NHIENLIEU));
                     Integer volume = c.getInt(c.getColumnIndex(THETICH));
                     String engine = c.getString(c.getColumnIndex(DONGCO));
@@ -149,8 +149,8 @@ public class XeDAO implements IXeDAO{
                     int color = c.getInt(c.getColumnIndex(MAUXE));
                     Integer amount = c.getInt(c.getColumnIndex(SOLUONG));
                     double price = c.getDouble(c.getColumnIndex(GIAXE));
-                    double mass = c.getDouble(c.getColumnIndex(KHOILUONG));
-                    double speed = c.getDouble(c.getColumnIndex(VANTOC));
+                    int mass = c.getInt(c.getColumnIndex(KHOILUONG));
+                    int speed = c.getInt(c.getColumnIndex(VANTOC));
                     double fuel = c.getDouble(c.getColumnIndex(NHIENLIEU));
                     Integer volume = c.getInt(c.getColumnIndex(THETICH));
                     String engine = c.getString(c.getColumnIndex(DONGCO));
@@ -208,8 +208,8 @@ public class XeDAO implements IXeDAO{
         int color = c.getInt(c.getColumnIndex(MAUXE));
         Integer amount = c.getInt(c.getColumnIndex(SOLUONG));
         double price = c.getDouble(c.getColumnIndex(GIAXE));
-        double mass = c.getDouble(c.getColumnIndex(KHOILUONG));
-        double speed = c.getDouble(c.getColumnIndex(VANTOC));
+        int mass = c.getInt(c.getColumnIndex(KHOILUONG));
+        int speed = c.getInt(c.getColumnIndex(VANTOC));
         double fuel = c.getDouble(c.getColumnIndex(NHIENLIEU));
         Integer volume = c.getInt(c.getColumnIndex(THETICH));
         String engine = c.getString(c.getColumnIndex(DONGCO));

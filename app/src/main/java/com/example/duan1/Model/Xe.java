@@ -7,8 +7,8 @@ public class Xe {
     private int color;
     private int amount;         //số lượng
     private double price;
-    private double mass;        //khối lượng
-    private double speed;
+    private int mass;        //khối lượng
+    private int speed;
     private double fuel;        //nhiên liệu
     private int volume;         //thể tích xilanh
     private String engine;      //động cơ
@@ -17,7 +17,7 @@ public class Xe {
     public Xe() {
     }
 
-    public Xe(int id, String name, byte[] images, int color, int amount, double price, double mass, double speed, double fuel, int volume, String engine, int idhangxe) {
+    public Xe(int id, String name, byte[] images, int color, int amount, double price, int mass, int speed, double fuel, int volume, String engine, int idhangxe) {
         this.id = id;
         this.name = name;
         this.images = images;
@@ -80,19 +80,19 @@ public class Xe {
         this.price = price;
     }
 
-    public double getMass() {
+    public int getMass() {
         return mass;
     }
 
-    public void setMass(double mass) {
+    public void setMass(int mass) {
         this.mass = mass;
     }
 
-    public double getSpeed() {
+    public int getSpeed() {
         return speed;
     }
 
-    public void setSpeed(double speed) {
+    public void setSpeed(int speed) {
         this.speed = speed;
     }
 

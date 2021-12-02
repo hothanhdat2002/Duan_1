@@ -47,10 +47,10 @@ public class HoaDonChiTiet_Fragment extends Fragment {
     public static final String TAG = HoaDonChiTiet_Fragment.class.getName();
     private RecyclerView rv_hdct;
     private ImageButton ib_giamxe, ib_tangxe;
-    private TextView tv_amount_xe;
-    private TextView tv_price;
+    private TextView tv_amount_xe,tv_totallist;
     private Spinner sp_xe;
     private List<Xe> listXe;
+    private ImageButton btn_refresh;
     private List<HoaDonChiTiet> listHDCT;
     private Xe_Item_Adapter item_adapter;
     private int count = 1;
@@ -79,15 +79,15 @@ public class HoaDonChiTiet_Fragment extends Fragment {
     public void onViewCreated(View view,  Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
-
         ib_giamxe =  view.findViewById(R.id.ib_giamxe);
         ib_tangxe = view.findViewById(R.id.ib_tangxe);
         tv_amount_xe = view.findViewById(R.id.tv_amount_xe);
         rv_hdct = view.findViewById(R.id.rv_hdct);
         btn_add = view.findViewById(R.id.btn_add_hdct);
         btn_save = view.findViewById(R.id.btn_save_hdct);
+        tv_totallist = view.findViewById(R.id.tv_totallist);
         btn_thanhtoan = view.findViewById(R.id.btn_thanhtoan);
+        btn_refresh = view.findViewById(R.id.btn_refresh);
         // lấy mã hóa đơn từ fragment hóa đơn
         id_hoadon = getArguments().getInt("id_hoadon");
 
@@ -129,7 +129,8 @@ public class HoaDonChiTiet_Fragment extends Fragment {
 
 //        loadData();
         buildRecyclerView();
-
+        XeDAO xeDAO = new XeDAO(getContext());
+        listHDCT = (new HoaDonChiTietDAO(getContext()).get());
         //nút thêm sản phẩm vào recycleview
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,23 +143,34 @@ public class HoaDonChiTiet_Fragment extends Fragment {
                     if (data.get(i).getId_xe()==xe_id){
                         amount = amount + data.get(i).getAmount();
                         data.get(i).setAmount(amount);
+
                         adapter.notifyItemChanged(i);
+
                         break;
                     }
                 }
-
                 if (i>=data.size()) {
                     data.add(new HoaDonChiTiet(id_hoadon, xe_id, amount));
                 }
+                double sl = 0;
+                for (i = 0;i<data.size();i++) {
+                    sl += (data.get(i).getAmount() * listXe.get(i).getPrice());
+                    tv_totallist.setText(sl + "");
+                }
+                tv_amount_xe.setText(String.valueOf(1));
 //                // notifying adapter when new data added.
                 adapter.notifyItemInserted(data.size());
 
-
             }
         });
-        XeDAO xeDAO = new XeDAO(getContext());
-        listHDCT = (new HoaDonChiTietDAO(getContext()).get());
-//        Xe xe = (Xe) sp_xe.getSelectedItem();
+        btn_refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                double sl1 = 0;
+                sl1  = totalist();
+                tv_totallist.setText(sl1 + "");
+            }
+        });
 
         //Lưu sản phẩm từ recycle view vào database HDCT
         btn_save.setOnClickListener(new View.OnClickListener() {
@@ -176,9 +188,6 @@ public class HoaDonChiTiet_Fragment extends Fragment {
                                 hoaDonChiTiet = data.get(j);
                                 dao.insert(hoaDonChiTiet);
                             }
-//                            for (int k = 0; k < listHDCT.size(); k++) {
-//                                xeDAO.updateAmount(listHDCT.get(k).getId_xe(), listXe.get(k).getId());
-//                            }
                         };
                     }
                 Toast.makeText(getContext(), "Product saved successfully", Toast.LENGTH_SHORT).show();
@@ -203,11 +212,19 @@ public class HoaDonChiTiet_Fragment extends Fragment {
         });
 
     }
+    public double totalist(){
+        double sl2=0;
+        for (int i = 0;i<data.size();i++) {
+            sl2 += (data.get(i).getAmount() * listXe.get(i).getPrice());
 
+        }
+        return sl2;
+    }
     @Override
     public void onResume() {
         super.onResume();
         xeDaThem = dao.sumBike(xe_id);
+
     }
 
     private void buildRecyclerView() {

@@ -34,8 +34,7 @@ public class HoaDonDAO implements IHoaDonDAO{
         List<HoaDon> list = new ArrayList<>();
         String sql = " SELECT "+MA_HOADON+","+
                 ""+TENKHACHHANG+","+
-                ""+NGAYTAO+","+
-                ""+MA_ADMIN_FK +" "+
+                ""+NGAYTAO+" "+
                 "FROM "+BANG_HOADON+"";
         SQLiteDatabase database = mydb.getReadableDatabase();
         Cursor c =  database.rawQuery(sql,null);
@@ -46,13 +45,11 @@ public class HoaDonDAO implements IHoaDonDAO{
                     String name_customer = c.getString(c.getColumnIndex(TENKHACHHANG));
                     Long date = c.getLong(c.getColumnIndex(NGAYTAO));
                     Date create_date = new Date(date);
-                    Integer id_admin = c.getInt(c.getColumnIndex(MA_ADMIN_FK));
 
                     HoaDon hoaDon = new HoaDon();
                     hoaDon.setId(id);
                     hoaDon.setName_customer(name_customer);
                     hoaDon.setDate(create_date);
-                    hoaDon.setId_admin(id_admin);
 
                     list.add(hoaDon);
                 } while (c.moveToNext());
@@ -77,7 +74,6 @@ public class HoaDonDAO implements IHoaDonDAO{
             values.put(TENKHACHHANG,hoaDon.getName_customer());
             values.put(NGAYTAO,hoaDon.getDate().getTime());
             values.put(TENKHACHHANG,hoaDon.getName_customer());
-            values.put(MA_ADMIN_FK,hoaDon.getId_admin());
 
             database.insertOrThrow(BANG_HOADON,null,values);
             database.setTransactionSuccessful();
@@ -97,7 +93,6 @@ public class HoaDonDAO implements IHoaDonDAO{
             values.put(TENKHACHHANG,hoaDon.getName_customer());
             values.put(NGAYTAO,hoaDon.getDate().getTime());
             values.put(TENKHACHHANG,hoaDon.getName_customer());
-            values.put(MA_ADMIN_FK,hoaDon.getId_admin());
             database.update(BANG_HOADON,values,MA_HOADON + " = ?",new String[]{String.valueOf(hoaDon.getId())});
             database.setTransactionSuccessful();
         }catch (Exception ex){

@@ -44,7 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="256dp"
+        android:layout_marginTop="224dp"
         android:orientation="horizontal"
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -84,34 +84,25 @@
         android:id="@+id/tv_created"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="28dp"
-        android:text="Date"
-        android:fontFamily="@font/poppinregular"
-        android:textSize="18dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="32dp"
         android:backgroundTint="@color/black"
+        android:fontFamily="@font/poppinregular"
+        android:text="Date"
+        android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_admin" />
+        app:layout_constraintTop_toBottomOf="@+id/et_tenkhachhang" />
 
     <TextView
         android:id="@+id/tv_createdValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="3dp"
         android:drawableStart="@drawable/arrow_down"
         android:textSize="18dp"
         android:backgroundTint="@color/black"
         app:layout_constraintStart_toEndOf="@+id/tv_created"
         app:layout_constraintTop_toTopOf="@+id/tv_created" />
 
-    <Spinner
-        android:id="@+id/sp_admin"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="128dp"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

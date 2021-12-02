@@ -37,20 +37,18 @@ import java.util.List;
 public class Them_HoaDon_Fragment extends DialogFragment implements FragmentResultListener, DatePickerDialog.OnDateSetListener {
     private EditText et_name_customer;
     private Button btn_add,btn_cancel;
-    private Spinner sp_admin;
     private TextView tv_created,tv_createdValue;
     private Admin_Item_Adapter item_adapter;
     private List<Admin> listAdmin;
     private Date createdDate = new Date();
     private Integer admin_id_sp;   //ID Admin trong Spinner
 
-    public static Them_HoaDon_Fragment newInstance(Integer id, String name_customer, Long date, Integer id_admin ){
+    public static Them_HoaDon_Fragment newInstance(Integer id, String name_customer, Long date ){
         Them_HoaDon_Fragment fragment = new Them_HoaDon_Fragment();
         Bundle bundle = new Bundle();
         bundle.putInt("id",id);
         bundle.putString("name_customer",name_customer);
         bundle.putLong("date",date);
-        bundle.putInt("id_admin",id_admin);
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -68,7 +66,6 @@ public class Them_HoaDon_Fragment extends DialogFragment implements FragmentResu
         et_name_customer = (EditText) view.findViewById(R.id.et_tenkhachhang);
         btn_add = (Button) view.findViewById(R.id.btn_add_hoadon);
         btn_cancel = (Button) view.findViewById(R.id.btn_cancel_hoadon);
-        sp_admin = (Spinner) view.findViewById(R.id.sp_admin);
         tv_created = (TextView) view.findViewById(R.id.tv_created);
         tv_createdValue = (TextView) view.findViewById(R.id.tv_createdValue);
 
@@ -78,21 +75,13 @@ public class Them_HoaDon_Fragment extends DialogFragment implements FragmentResu
         Long date  = getArguments().getLong("date");
         Integer id_admin = getArguments().getInt("id_admin");
 
-        
-        //Đổ dữ liệu lên spinner;
-        listAdmin = (new AdminDAO(getContext()).get());
-        item_adapter = new Admin_Item_Adapter(listAdmin,getContext());
-        sp_admin.setAdapter(item_adapter);
-        sp_admin.setSelection(0);
+
 
         // nếu id ==-1 là thêm
         if (id==-1){
             et_name_customer.setText("");
         }else{
             et_name_customer.setText(name_customer);
-            int selectedIndex = getIndex(listAdmin,id_admin);   //lấy dữ liệu từ index đã chọn
-            sp_admin.setSelection(selectedIndex);
-
             SimpleDateFormat sdf = new SimpleDateFormat("dd - MM - yyyy");      //ngày đã chọn
             tv_createdValue.setText(sdf.format(date));
         }
@@ -105,19 +94,6 @@ public class Them_HoaDon_Fragment extends DialogFragment implements FragmentResu
             }
         });
 
-        //Khi click 1 item spinner thì sẽ lấy được ID
-        sp_admin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Admin admin = (Admin) parent.getItemAtPosition(position);
-                admin_id_sp = admin.getId();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
         //Nút thêm dữ liệu
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,7 +104,6 @@ public class Them_HoaDon_Fragment extends DialogFragment implements FragmentResu
                 HoaDon hoaDon = new HoaDon();
                 hoaDon.setName_customer(name_customer);
                 hoaDon.setDate(createdDate);
-                hoaDon.setId_admin(admin_id_sp);
                 if (id == -1) {
                     dao.insert(hoaDon);
                 }else{
@@ -161,14 +136,6 @@ public class Them_HoaDon_Fragment extends DialogFragment implements FragmentResu
 
     }
 
-    //lấy id của spinner đã chọn
-    private int getIndex(List<Admin> admin, int _admin_id){
-        for (int i = 0; i < admin.size();i++){
-            if (admin.get(i).getId() == _admin_id)
-                return i;
-        }
-        return 0;
-    }
     @Override
     public void onFragmentResult( String requestKey,Bundle result) {
 

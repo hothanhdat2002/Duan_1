@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -21,9 +23,11 @@ import com.example.duan1.Adapter.ThanhToan_Adapter;
 import com.example.duan1.DAO.HangXeDAO;
 import com.example.duan1.DAO.HoaDonChiTietDAO;
 import com.example.duan1.DAO.HoaDonDAO;
+import com.example.duan1.DAO.XeDAO;
 import com.example.duan1.Model.HangXe;
 import com.example.duan1.Model.HoaDon;
 import com.example.duan1.Model.HoaDonChiTiet;
+import com.example.duan1.Model.Xe;
 import com.example.duan1.R;
 
 import java.util.ArrayList;
@@ -36,6 +40,9 @@ public class ThanhToan_Fragment extends Fragment  {
     private ThanhToan_Adapter adapter;
     private ArrayList<HoaDonChiTiet> data;
     private Button btn_hoantat;
+    private ImageButton btn_refresh_total;
+    private TextView tv_total;
+    private List<Xe> listXe;
     @Override
     public void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +62,8 @@ public class ThanhToan_Fragment extends Fragment  {
         Integer id_hoadon = getArguments().getInt("id_hoadon");
         rv = view.findViewById(R.id.rv_sp_hdct);
         btn_hoantat = view.findViewById(R.id.btn_hoantat);
+        tv_total = view.findViewById(R.id.tv_total);
+        btn_refresh_total = view.findViewById(R.id.btn_refresh_total);
         data = (new HoaDonChiTietDAO(getContext()).getByIDSum(id_hoadon));
 
 
@@ -62,7 +71,25 @@ public class ThanhToan_Fragment extends Fragment  {
         rv.setAdapter(adapter);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         rv.setLayoutManager(layoutManager);
-
+        double total = 0;
+        for (int i = 0;i<data.size();i++){
+                int xeid = data.get(i).getId_xe();
+            Xe xe = (new XeDAO(getContext()).getByID(xeid));
+            total += (data.get(i).getAmount() * xe.getPrice());
+        }
+        tv_total.setText(total+" $");
+        btn_refresh_total.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                double total1 = 0;
+                for (int i = 0;i<data.size();i++) {
+                    int xeid = data.get(i).getId_xe();
+                    Xe xe = (new XeDAO(getContext()).getByID(xeid));
+                    total1 += (data.get(i).getAmount() * xe.getPrice());
+                }
+                tv_total.setText(total1 +" $");
+            }
+        });
         btn_hoantat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

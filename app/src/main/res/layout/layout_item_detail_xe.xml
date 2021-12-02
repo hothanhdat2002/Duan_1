@@ -64,7 +64,7 @@
                 android:id="@+id/imageView11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/bongxe"
+                android:src="@drawable/bong1"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_detail_image"
                 app:layout_constraintEnd_toEndOf="@+id/iv_detail_image"
                 app:layout_constraintStart_toStartOf="@+id/iv_detail_image" />
@@ -90,7 +90,7 @@
                 android:layout_marginBottom="17dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/bongxe" />
+                app:srcCompat="@drawable/bong" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -176,8 +176,8 @@
 
             <TextView
                 android:id="@+id/tv_cm"
-                android:layout_width="14dp"
-                android:layout_height="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="2dp"
                 android:layout_marginBottom="6dp"
                 android:fontFamily="@font/poppinregular"
@@ -222,7 +222,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/poppinblack_medium"
                 android:text="Fuel Capacity: "
-                android:textSize="17dp"
+                android:textSize="16dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_engine1" />
 
@@ -233,7 +233,7 @@
                 android:layout_marginStart="12dp"
                 android:fontFamily="@font/poppinblack_medium"
                 android:text="12.5 L"
-                android:textSize="17dp"
+                android:textSize="16dp"
                 android:textColor="@color/dennhat"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_fuel1"
                 app:layout_constraintStart_toEndOf="@+id/tv_fuel1" />
@@ -243,10 +243,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="40dp"
                 android:fontFamily="@font/poppinblack_medium"
                 android:text="Engine: "
-                android:textSize="17dp"
+                android:textSize="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+
+            <TextView
+                android:id="@+id/tv_amount1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/poppinblack_medium"
+                android:text="Amount: "
+                android:textSize="16dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_name" />
 
@@ -257,8 +269,8 @@
                 android:layout_marginStart="12dp"
                 android:fontFamily="@font/poppinblack_medium"
                 android:text="Name: "
-                android:textSize="17dp"
-                android:layout_marginTop="30dp"
+                android:textSize="16dp"
+                android:layout_marginTop="20dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_volum" />
 
@@ -270,9 +282,22 @@
                 android:fontFamily="@font/poppinblack_medium"
                 android:text="Kawasaki"
                 android:textColor="@color/dennhat"
-                android:textSize="17dp"
+                android:textSize="16dp"
                 app:layout_constraintStart_toEndOf="@+id/tv_name"
                 app:layout_constraintTop_toTopOf="@+id/tv_name" />
+
+            <TextView
+                android:id="@+id/tv_amount_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:fontFamily="@font/poppinblack_medium"
+                android:text="2"
+                android:textColor="@color/dennhat"
+                android:textSize="16dp"
+                app:layout_constraintBottom_toTopOf="@+id/tv_engine1"
+                app:layout_constraintStart_toEndOf="@+id/tv_amount1"
+                app:layout_constraintTop_toBottomOf="@+id/tv_name" />
 
             <TextView
                 android:id="@+id/tv_detail_price"
@@ -305,9 +330,22 @@
                 android:fontFamily="@font/poppinblack_medium"
                 android:text="Air-cooled"
                 android:textColor="@color/dennhat"
-                android:textSize="17dp"
+                android:textSize="16dp"
                 app:layout_constraintStart_toEndOf="@+id/tv_engine1"
                 app:layout_constraintTop_toTopOf="@+id/tv_engine1" />
+
+            <ImageView
+                android:id="@+id/imageView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_amount_detail"
+                app:layout_constraintStart_toEndOf="@+id/tv_amount_detail"
+                app:layout_constraintTop_toTopOf="@+id/tv_amount_detail"
+                app:layout_constraintVertical_bias="1.0"
+                app:srcCompat="@drawable/bike1" />
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

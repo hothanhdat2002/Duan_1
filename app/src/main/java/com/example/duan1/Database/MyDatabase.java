@@ -48,19 +48,6 @@ public class MyDatabase extends SQLiteOpenHelper {
                 " REFERENCES "+BANG_HANGXE+"("+MAHANG+") )";
         db.execSQL(createTableXe);
 
-        //Tao bang Admin
-        String createTableAdmin = "CREATE TABLE IF NOT EXISTS " + BANG_ADMIN+
-                "( "+MA_ADMIN +" INTEGER PRIMARY KEY AUTOINCREMENT," +
-                ""+TENTAIKHOAN+" TEXT NOT NULL," +
-                ""+MATKHAU+" TEXT NOT NULL," +
-                ""+SDT+" INTEGER NOT NULL)";
-        db.execSQL(createTableAdmin);
-        String sql1 = "INSERT INTO "+BANG_ADMIN+ " VALUES "+ "(1,'HothanhDat','123',0916266794)";
-        db.execSQL(sql1);
-        String sql2 = "INSERT INTO "+BANG_ADMIN+ " VALUES "+ "(2,'TrongNguyen','123',0916266794)";
-        db.execSQL(sql2);
-        String sql3 = "INSERT INTO "+BANG_ADMIN+ " VALUES "+ "(3,'ThanhBinh','123',0943434345)";
-        db.execSQL(sql3);
         //Tao bang Hóa Đơn
         String createTableHoaDon = "CREATE TABLE IF NOT EXISTS " + BANG_HOADON+
                 "( "+MA_HOADON +" INTEGER PRIMARY KEY AUTOINCREMENT," +

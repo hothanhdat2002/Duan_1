@@ -39,11 +39,5 @@ public class OpenHelper {
     public static final String MA_XE_FK ="MAXE";
     public static final String SOLUONGBAN ="SOLUONG";
 
-    //Bảng Admin
-    public static final String BANG_ADMIN ="ADMIN";
-    public static final String MA_ADMIN ="MAADMIN";
-    public static final String TENTAIKHOAN ="TENTAIKHOAN";
-    public static final String MATKHAU ="MATKHAU";
-    public static final String SDT ="SDT";
 
 }

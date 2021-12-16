@@ -5,12 +5,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,14 +18,12 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.duan1.DAO.AdminDAO;
-import com.example.duan1.DAO.HangXeDAO;
+import com.example.duan1.DAO.HoaDonChiTietDAO;
 import com.example.duan1.DAO.HoaDonDAO;
 import com.example.duan1.Fragment.HoaDonChiTiet_Fragment;
 import com.example.duan1.Fragment.Them_HoaDon_Fragment;
-import com.example.duan1.Model.Admin;
-import com.example.duan1.Model.HangXe;
 import com.example.duan1.Model.HoaDon;
+import com.example.duan1.Model.HoaDonChiTiet;
 import com.example.duan1.R;
 
 import java.text.SimpleDateFormat;
@@ -35,6 +32,7 @@ import java.util.List;
 
 public class HoaDon_Adapter extends RecyclerView.Adapter<HoaDon_Adapter.ViewHolder> implements Filterable {
     private List<HoaDon> data;
+    private List<HoaDonChiTiet> listHDCT;
     private Context context;
     List<HoaDon> arrSortHoaDon;
     private Filter HoaDonFilter;
@@ -89,9 +87,18 @@ public class HoaDon_Adapter extends RecyclerView.Adapter<HoaDon_Adapter.ViewHold
             @Override
             public void onClick(View v) {
                 HoaDonDAO dao = new HoaDonDAO(context);
-                dao.delete(hoaDon.getId());
-                List<HoaDon> _data = dao.get();
-                updateList(_data);
+                HoaDonChiTietDAO hoaDonChiTietDAO = new HoaDonChiTietDAO(context);
+                listHDCT = hoaDonChiTietDAO.get();
+                for (int i =0;i<listHDCT.size();i++) {
+                    if (listHDCT.get(i).getId_hoadon() == hoaDon.getId()) {
+                        Toast.makeText(context.getApplicationContext(), "Error! An error occurred. Please try again later", Toast.LENGTH_SHORT).show();
+                    }else {
+                        dao.delete(hoaDon.getId());
+                        List<HoaDon> _data = dao.get();
+                        updateList(_data);
+                    }
+                }
+
             }
         });
         btn_update.setOnClickListener(new View.OnClickListener() {

@@ -28,6 +28,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.duan1.DAO.HangXeDAO;
+import com.example.duan1.DAO.HoaDonChiTietDAO;
 import com.example.duan1.DAO.XeDAO;
 import com.example.duan1.Fragment.Detail_Xe_Fragment;
 import com.example.duan1.Fragment.HoaDonChiTiet_Fragment;
@@ -35,6 +36,7 @@ import com.example.duan1.Fragment.Them_HangXe_Fragment;
 import com.example.duan1.Fragment.Them_Xe_Fragment;
 import com.example.duan1.Model.HangXe;
 import com.example.duan1.Model.HoaDon;
+import com.example.duan1.Model.HoaDonChiTiet;
 import com.example.duan1.Model.Xe;
 import com.example.duan1.R;
 
@@ -43,6 +45,7 @@ import java.util.List;
 
 public class Xe_Adapter extends RecyclerView.Adapter<Xe_Adapter.ViewHolder> implements Filterable {
     private List<Xe> data;
+    private List<HoaDonChiTiet> listHDCT;
     private Context context;
     List<Xe> arrSortXe;
     private Filter XeFilter;
@@ -74,9 +77,19 @@ public class Xe_Adapter extends RecyclerView.Adapter<Xe_Adapter.ViewHolder> impl
                                 return true;
                             case R.id.menu_delete:
                                 XeDAO dao = new XeDAO(context);
-                                dao.delete(xe.getId());
-                                List<Xe> _data = dao.get();
-                                updateList(_data);
+                                HoaDonChiTietDAO hoaDonChiTietDAO = new HoaDonChiTietDAO(context);
+                                listHDCT = hoaDonChiTietDAO.get();
+                                for (int i =0;i<listHDCT.size();i++) {
+                                    if (listHDCT.get(i).getId_xe() == xe.getId()) {
+                                        Toast.makeText(parent.getContext(), "Error! An error occurred. Please try again later", Toast.LENGTH_SHORT).show();
+                                    }else {
+                                        dao.delete(xe.getId());
+                                        List<Xe> _data = dao.get();
+                                        updateList(_data);
+                                    }
+                                }
+
+
                                 return true;
                             default:
                                 return false;

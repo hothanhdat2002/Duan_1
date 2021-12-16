@@ -6,24 +6,31 @@ import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.example.duan1.Model.HangXe;
 import com.example.duan1.Model.Top;
 import com.example.duan1.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class Top10_Adapter extends RecyclerView.Adapter<Top10_Adapter.ViewHolder>{
+public class Top10_Adapter extends RecyclerView.Adapter<Top10_Adapter.ViewHolder> implements Filterable {
     private List<Top> data;
     private Context context;
+    List<Top> arrSortTop;
+    private Filter TopFilter;
 
-    public Top10_Adapter(List<Top> data, Context context) {
-        this.data = data;
+    public Top10_Adapter(List<Top> _data, Context context) {
+        this.data = _data;
         this.context = context;
+        this.arrSortTop = data;
     }
 
     @Override
@@ -52,6 +59,13 @@ public class Top10_Adapter extends RecyclerView.Adapter<Top10_Adapter.ViewHolder
         return data.size();
     }
 
+    @Override
+    public Filter getFilter() {
+        if (TopFilter == null)
+            TopFilter = new Top10_Adapter.CustomFilter();
+        return TopFilter;
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView tv_id;
         private final TextView tv_amount;
@@ -73,6 +87,44 @@ public class Top10_Adapter extends RecyclerView.Adapter<Top10_Adapter.ViewHolder
 
         public ImageView getIv_booktop() {
             return iv_booktop;
+        }
+    }
+    public void resetData() {
+        data = arrSortTop;
+    }
+    public void changeDataset(ArrayList<Top> items){
+        this.data = items;
+        notifyDataSetChanged();
+    }
+    private class CustomFilter extends Filter {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            FilterResults results = new FilterResults();
+            // We implement here the filter logic
+            if (constraint == null || constraint.length() == 0) {
+                results.values = arrSortTop;
+                results.count = arrSortTop.size();
+            }else{
+                List<Top> top = new ArrayList<Top>();
+                for (Top p : data) {
+                    if
+                    (p.getName().toUpperCase().startsWith(constraint.toString().toUpperCase()))
+                        top.add(p);
+                }
+                results.values = top;
+                results.count = top.size();
+            }
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+            if (filterResults.count == 0)
+                notifyDataSetChanged();
+            else {
+                data = (List<Top>) filterResults.values;
+                notifyDataSetChanged();
+            }
         }
     }
 }

@@ -6,13 +6,12 @@
     android:paddingRight="20dp"
     android:orientation="vertical">
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/et_search_top"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:background="@drawable/custom_et_search"
         android:drawableStart="@drawable/search"
         android:drawablePadding="10dp"
-        android:focusable="false"
         android:paddingLeft="10dp"
         tools:ignore="SpeakableTextPresentCheck" />
     <androidx.recyclerview.widget.RecyclerView

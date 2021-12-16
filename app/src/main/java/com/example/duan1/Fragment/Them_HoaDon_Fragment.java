@@ -8,24 +8,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentResultListener;
 
 import com.example.duan1.Adapter.Admin_Item_Adapter;
-import com.example.duan1.Adapter.HangXe_Item_Adapter;
-import com.example.duan1.DAO.AdminDAO;
-import com.example.duan1.DAO.HangXeDAO;
 import com.example.duan1.DAO.HoaDonDAO;
 import com.example.duan1.Model.Admin;
-import com.example.duan1.Model.HangXe;
 import com.example.duan1.Model.HoaDon;
 import com.example.duan1.R;
 
@@ -73,7 +66,7 @@ public class Them_HoaDon_Fragment extends DialogFragment implements FragmentResu
         Integer id = getArguments().getInt("id",-1);
         String name_customer = getArguments().getString("name_customer","");
         Long date  = getArguments().getLong("date");
-        Integer id_admin = getArguments().getInt("id_admin");
+
 
 
 
@@ -119,7 +112,7 @@ public class Them_HoaDon_Fragment extends DialogFragment implements FragmentResu
 
 
         getDialog().getWindow().setLayout(1000, WindowManager.LayoutParams.WRAP_CONTENT);
-        getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+        getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
     }
 

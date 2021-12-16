@@ -14,6 +14,7 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import androidx.annotation.RequiresApi;
@@ -22,8 +23,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.duan1.DAO.HangXeDAO;
+import com.example.duan1.DAO.XeDAO;
 import com.example.duan1.Fragment.Them_HangXe_Fragment;
 import com.example.duan1.Model.HangXe;
+import com.example.duan1.Model.Xe;
 import com.example.duan1.R;
 
 import java.util.ArrayList;
@@ -31,6 +34,7 @@ import java.util.List;
 
 public class HangXe_Adapter extends RecyclerView.Adapter<HangXe_Adapter.ViewHolder> implements Filterable {
     private List<HangXe> data;
+    private List<Xe> listXe;
     private Context context;
     List<HangXe> arrSortHangXe;
     private Filter HangXeFilter;
@@ -61,9 +65,18 @@ public class HangXe_Adapter extends RecyclerView.Adapter<HangXe_Adapter.ViewHold
                                 return true;
                             case R.id.menu_delete:
                                 HangXeDAO dao = new HangXeDAO(context);
-                                dao.delete(hangXe.getId());
-                                List<HangXe> _data = dao.get();
-                                updateList(_data);
+                                XeDAO xeDAO = new XeDAO(context);
+                                listXe = xeDAO.get();
+                                for (int i =0;i<listXe.size();i++){
+                                    if (listXe.get(i).getIdhangxe()==hangXe.getId()){
+                                        Toast.makeText(parent.getContext(), "Error! An error occurred. Please try again later", Toast.LENGTH_SHORT).show();
+                                    }else {
+                                        dao.delete(hangXe.getId());
+                                        List<HangXe> _data = dao.get();
+                                        updateList(_data);
+                                    }
+                                }
+
                                 return true;
                             default:
                                 return false;

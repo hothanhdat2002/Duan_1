@@ -8,7 +8,9 @@
 
     <RelativeLayout
         android:layout_width="322dp"
-        android:layout_height="435dp"
+        android:layout_height="465dp"
+        android:background="@drawable/custom_item_hangxe"
+        android:elevation="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
@@ -25,7 +27,7 @@
             android:layout_marginTop="12dp"
             android:fontFamily="@font/poppins_bold"
             android:letterSpacing=".1"
-            android:text="Hello"
+            android:text="Sign in"
             android:textColor="@color/yellow"
             android:textSize="20sp" />
 
@@ -43,10 +45,10 @@
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/email"
                 android:drawablePadding="10dp"
-                android:fontFamily="@font/poppins_medium"
+                android:fontFamily="@font/poppinregular"
                 android:hint="Email"
                 android:letterSpacing=".1"
-                android:textColor="@color/dark"
+                android:textColor="@color/dennhat"
                 android:textSize="15sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -64,11 +66,11 @@
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/lock"
                 android:drawablePadding="10dp"
-                android:fontFamily="@font/poppins_medium"
+                android:fontFamily="@font/poppinregular"
                 android:hint="Password"
                 android:inputType="textPassword"
                 android:letterSpacing=".1"
-                android:textColor="@color/dark"
+                android:textColor="@color/dennhat"
                 android:textSize="15sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -92,14 +94,14 @@
             android:layout_height="48dp"
             android:layout_below="@+id/password"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="140dp"
+            android:layout_marginTop="120dp"
             android:background="@drawable/button"
-            android:fontFamily="@font/poppinregular"
-            android:text="Login"
+            android:fontFamily="@font/poppinblack_medium"
             android:letterSpacing="0.1"
-            android:textAllCaps="false"
+            android:text="Sign in"
             android:textAlignment="center"
-            android:textColor="@color/dark"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
             android:textSize="20sp" />
 
         <TextView
@@ -108,8 +110,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/btnLogin"
             android:layout_centerInParent="true"
-            android:layout_marginTop="30dp"
-            android:fontFamily="@font/poppins_medium"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppinregular"
             android:letterSpacing=".1"
             android:text="--- OR ---"
             android:textColor="@color/dark"
@@ -120,19 +122,19 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/or"
             android:gravity="center"
-            android:layout_marginTop="30dp">
+            android:layout_marginTop="15dp">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="30dp"
+                android:layout_height="20dp"
                 android:id="@+id/facebook"
                 android:src="@drawable/fb"
                 android:layout_below="@+id/or"
                 android:layout_centerInParent="true"
                 android:layout_marginRight="20dp"/>
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="30dp"
+                android:layout_height="20dp"
                 android:id="@+id/google"
                 android:layout_toRightOf="@+id/facebook"
                 android:src="@drawable/google"
@@ -147,8 +149,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_marginLeft="28dp"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="@font/poppins_medium"
+            android:layout_marginBottom="15dp"
+            android:fontFamily="@font/poppinregular"
             android:letterSpacing=".1"
             android:text="Have an account yet?"
             android:textColor="@color/dark"
@@ -161,7 +163,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="20dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="15dp"
             android:layout_toRightOf="@+id/endText"
             android:fontFamily="@font/poppins_medium"
             android:letterSpacing=".1"

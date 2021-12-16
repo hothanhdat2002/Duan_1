@@ -24,8 +24,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.duan1.Database.MyDatabase;
+import com.example.duan1.Fragment.HoaDonChiTiet_Fragment;
+import com.example.duan1.Fragment.Xe_Fragment;
 import com.example.duan1.Model.HangXe;
 import com.example.duan1.Model.Xe;
 
@@ -34,6 +37,7 @@ import java.util.List;
 
 public class XeDAO implements IXeDAO{
     MyDatabase mydb;
+    Context c;
     public XeDAO(Context c){
         mydb = MyDatabase.getInstance(c);
     }

@@ -38,7 +38,6 @@ public class StatisticDAO implements IStatisticDAO{
             if (c.moveToFirst()){
                 do {
                     Top top = new Top();
-
                     c.getInt(c.getColumnIndex(MA_XE_FK));
                     top.setName(c.getString(1));
                     top.setImages(c.getBlob(2));

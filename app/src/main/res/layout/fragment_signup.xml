@@ -9,6 +9,8 @@
     <RelativeLayout
         android:layout_width="322dp"
         android:layout_height="435dp"
+        android:background="@drawable/custom_item_hangxe"
+        android:elevation="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
@@ -121,10 +123,11 @@
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="30dp"
             android:background="@drawable/button"
-            android:fontFamily="@font/poppins_bold"
-            android:text="SIGN UP"
+            android:fontFamily="@font/poppinblack_medium"
+            android:text="Sign Up"
+            android:textAllCaps="false"
             android:textAlignment="center"
-            android:textColor="@color/dark"
+            android:textColor="@color/white"
             android:textSize="20sp" />
 
         <TextView

@@ -12,6 +12,8 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +25,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 
+import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
@@ -31,13 +34,16 @@ import androidx.fragment.app.FragmentResultListener;
 import com.example.duan1.DAO.HangXeDAO;
 import com.example.duan1.Model.HangXe;
 import com.example.duan1.R;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.io.ByteArrayOutputStream;
 
 public class Them_HangXe_Fragment extends DialogFragment implements FragmentResultListener {
-    private EditText et_name_hangxe;
     private Button btn_add,btn_delete,btn_choose;
     private ImageView iv_hangxe;
+    private TextInputLayout tl_hangxe;
+    private TextInputEditText et_name_hangxe;
     public static Them_HangXe_Fragment newInstance(Integer id, String name,byte[] logo){
         Them_HangXe_Fragment fragment = new Them_HangXe_Fragment();
         Bundle bundle = new Bundle();
@@ -56,12 +62,33 @@ public class Them_HangXe_Fragment extends DialogFragment implements FragmentResu
     @Override
     public void onViewCreated( View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        et_name_hangxe = (EditText) view.findViewById(R.id.et_ten_hangxe);
+        et_name_hangxe = (TextInputEditText) view.findViewById(R.id.et_ten_hangxe);
         btn_add = (Button) view.findViewById(R.id.btn_add_hangxe);
         iv_hangxe = (ImageView) view.findViewById(R.id.iv_dialog_hangxe);
         btn_delete = (Button) view.findViewById(R.id.btn_cancel_hangxe);
         btn_choose = (Button) view.findViewById(R.id.btn_choose_hangxe);
+        tl_hangxe = (TextInputLayout) view.findViewById(R.id.tl_hangxe);
+        et_name_hangxe.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
 
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (charSequence.length()>10){
+                    tl_hangxe.setError("Error!");
+                    tl_hangxe.setEndIconDrawable(R.drawable.error);
+                }else{
+                    tl_hangxe.setError(null);
+                    tl_hangxe.setEndIconDrawable(R.drawable.done);
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+            }
+        });
         //nút chọn ảnh
         btn_choose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,30 +121,40 @@ public class Them_HangXe_Fragment extends DialogFragment implements FragmentResu
         }else{                                                       // ngược lại là sửa
             et_name_hangxe.setText(name);
             iv_hangxe.setImageBitmap(ByteToImageView(logo));
+
         }
 
         //nhấn nút thêm
-        btn_add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                HangXeDAO dao = new HangXeDAO(getContext());
-                String name = et_name_hangxe.getText().toString();
-                byte[] logo = imageViewToByte(iv_hangxe);
+            btn_add.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    HangXeDAO dao = new HangXeDAO(getContext());
+                    String name = et_name_hangxe.getText().toString();
+                    byte[] logo = imageViewToByte(iv_hangxe);
+                    if (name.isEmpty()|| name.length()>10){
+                        Toast.makeText(getContext(), "Invalid category name", Toast.LENGTH_SHORT).show();
+                    }else {
+                        HangXe hangXe = new HangXe();
+                        hangXe.setName(name);
+                        hangXe.setLogo(logo);
 
-                HangXe hangXe = new HangXe();
-                hangXe.setName(name);
-                hangXe.setLogo(logo);
+                        // xét ID xem dialog là thêm hay sửa
+                        if (id == -1) {
+                            dao.insert(hangXe);
+                        } else {
+                            hangXe.setId(id);
+                            dao.update(hangXe);
+                        }
 
-                // xét ID xem dialog là thêm hay sửa
-                if (id == -1) {
-                    dao.insert(hangXe);
-                }else{
-                    hangXe.setId(id);
-                    dao.update(hangXe);
+                        //truyền key, bundle và thông báo cho FRAGMENT A là đã kết thúc;
+                        getParentFragmentManager().setFragmentResult("key", new Bundle());
+                        dismiss();
+                    }
                 }
-
-                //truyền key, bundle và thông báo cho FRAGMENT A là đã kết thúc;
-                getParentFragmentManager().setFragmentResult("key", new Bundle());
+            });
+        btn_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 dismiss();
             }
         });

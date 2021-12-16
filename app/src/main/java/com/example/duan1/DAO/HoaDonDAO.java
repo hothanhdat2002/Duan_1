@@ -35,7 +35,7 @@ public class HoaDonDAO implements IHoaDonDAO{
         String sql = " SELECT "+MA_HOADON+","+
                 ""+TENKHACHHANG+","+
                 ""+NGAYTAO+" "+
-                "FROM "+BANG_HOADON+"";
+                "FROM "+BANG_HOADON+" ORDER BY "+ NGAYTAO + " ASC";
         SQLiteDatabase database = mydb.getReadableDatabase();
         Cursor c =  database.rawQuery(sql,null);
         try {

@@ -204,36 +204,45 @@ public class Them_Xe_Fragment extends DialogFragment implements FragmentResultLi
                 String price = et_giaxe.getText().toString();
                 String amount = tv_value_amount.getText().toString();
                 String mass = et_khoiluong.getText().toString();
-                String speed = et_khoiluong.getText().toString();
+                String speed = et_vantoc.getText().toString();
                 String volume = et_thetich.getText().toString();
                 String fuel = et_nhienlieu.getText().toString();
                 String engine = et_dongco.getText().toString();
                 byte[] images = imageViewToByte(iv_xe);
+                if (name.isEmpty()||price.isEmpty()||amount.isEmpty()||mass.isEmpty()||speed.isEmpty()||volume.isEmpty()||fuel.isEmpty()||engine.isEmpty()){
+                    Toast.makeText(getContext(), "Somethings are invalid", Toast.LENGTH_SHORT).show();
+                }else {
+                    Xe xe = new Xe();
+                    xe.setName(name);
+                    xe.setImages(images);
+                    xe.setColor(data_color);
+                    xe.setAmount(Integer.parseInt(amount));
+                    xe.setPrice(Double.parseDouble(price));
+                    xe.setMass(Integer.parseInt(mass));
+                    xe.setSpeed(Integer.parseInt(speed));
+                    xe.setVolume(Integer.parseInt(volume));
+                    xe.setFuel(Double.parseDouble(fuel));
+                    xe.setEngine(engine);
+                    xe.setIdhangxe(hangxe_id);
 
-                Xe xe = new Xe();
-                xe.setName(name);
-                xe.setImages(images);
-                xe.setColor(data_color);
-                xe.setAmount(Integer.parseInt(amount));
-                xe.setPrice(Double.parseDouble(price));
-                xe.setMass(Integer.parseInt(mass));
-                xe.setSpeed(Integer.parseInt(speed));
-                xe.setVolume(Integer.parseInt(volume));
-                xe.setFuel(Double.parseDouble(fuel));
-                xe.setEngine(engine);
-                xe.setIdhangxe(hangxe_id);
 
+                    // xét ID xem dialog là thêm hay sửa
+                    if (id == -1) {
+                        dao.insert(xe);
+                    } else {
+                        xe.setId(id);
+                        dao.update(xe);
+                    }
 
-                // xét ID xem dialog là thêm hay sửa
-                if (id == -1) {
-                    dao.insert(xe);
-                }else{
-                    xe.setId(id);
-                    dao.update(xe);
+                    //truyền key, bundle và thông báo cho FRAGMENT A là đã kết thúc;
+                    getParentFragmentManager().setFragmentResult("key", new Bundle());
+                    dismiss();
                 }
-
-                //truyền key, bundle và thông báo cho FRAGMENT A là đã kết thúc;
-                getParentFragmentManager().setFragmentResult("key", new Bundle());
+            }
+        });
+        btn_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 dismiss();
             }
         });

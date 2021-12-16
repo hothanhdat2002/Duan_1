@@ -16,5 +16,11 @@
     <color name="mauxanhnhat">#BFDCAE</color>
     <color name="dark">#1E1E1E</color>
     <color name="cream">#F6F6F6</color>
-    <color name="yellow">#EDBD40</color>
+    <color name="yellow">#206A59</color>
+    <color name="colorPrimary">#00BCD4</color>
+    <color name="colorPrimaryDark">#0097A7</color>
+    <color name="colorAccent">#009688</color>
+    <color name="maudo">#EE0000</color>
+
+
 </resources>

@@ -68,6 +68,9 @@ public class HoaDonChiTietDAO implements IHoaDonChiTietDAO{
         return list;
     }
 
+
+
+
     @Override
     public ArrayList<HoaDonChiTiet> getByID(int id_hd) {
         ArrayList<HoaDonChiTiet> list = new ArrayList<>();
@@ -85,7 +88,6 @@ public class HoaDonChiTietDAO implements IHoaDonChiTietDAO{
                     Integer id_hoadon = c.getInt(c.getColumnIndex(MA_HOADON_FK));
                     Integer id_xe = c.getInt(c.getColumnIndex(MA_XE_FK));
                     Integer amount = c.getInt(c.getColumnIndex(SOLUONGBAN));
-
 
                     HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
                     hoaDonChiTiet.setId(id);

@@ -8,8 +8,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.duan1.Database.MyDatabase;
+import com.example.duan1.Fragment.HangXe_Fragment;
 import com.example.duan1.Model.HangXe;
 
 import java.util.ArrayList;

@@ -9,7 +9,6 @@ public interface IXeDAO {
     List<Xe> get();
     List<Xe> getByIDHang(int maHang);
     Xe getByID(Integer maxe);
-    Integer sumAmount(int id_xe);
     void insert(Xe xe);
     void update(Xe xe);
     void delete(int maxe);

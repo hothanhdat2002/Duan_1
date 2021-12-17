@@ -93,10 +93,10 @@ public class Login_Activity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(Login_Activity.this, "Successfully", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Login_Activity.this, "Logged in successfully", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(Login_Activity.this, Navigation_Drawer.class));
                         } else {
-                            Toast.makeText(Login_Activity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Login_Activity.this, "Incorrect email or password", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

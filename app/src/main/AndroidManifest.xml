@@ -26,16 +26,16 @@
         <activity
             android:name=".Activities.SplashScreen"
             android:exported="true" >
-
-        </activity>
-        <activity
-            android:name=".Navigation_Drawer"
-            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".Navigation_Drawer"
+            android:exported="true">
+
         </activity>
     </application>
 

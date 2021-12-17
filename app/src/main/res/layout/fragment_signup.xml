@@ -36,6 +36,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/hi"
+            app:prefixText="(+84)"
+            app:prefixTextColor="@color/black"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="12dp">
 
@@ -43,6 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/phone"
+                android:drawableTint="@color/mauxanh"
                 android:drawablePadding="10dp"
                 android:fontFamily="@font/poppins_medium"
                 android:hint="Phone number"
@@ -83,7 +86,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/lock"
+                android:drawableStart="@drawable/password"
                 android:drawablePadding="10dp"
                 android:fontFamily="@font/poppins_medium"
                 android:hint="Password"
@@ -105,7 +108,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/lock"
+                android:drawableStart="@drawable/password"
                 android:drawablePadding="10dp"
                 android:fontFamily="@font/poppins_medium"
                 android:hint="Confirm Password"
@@ -124,9 +127,9 @@
             android:layout_marginTop="30dp"
             android:background="@drawable/button"
             android:fontFamily="@font/poppinblack_medium"
-            android:text="Sign Up"
-            android:textAllCaps="false"
+            android:text="Sign up"
             android:textAlignment="center"
+            android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="20sp" />
 
@@ -148,15 +151,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginRight="20dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="13dp"
             android:layout_toRightOf="@+id/endText"
-            android:fontFamily="@font/poppins_medium"
+            android:fontFamily="@font/popp_semol"
             android:letterSpacing=".1"
-            android:text="Login now"
+            android:text="Login"
             android:textColor="@color/yellow"
-            android:textSize="12sp" />
+            android:textSize="15sp" />
 
 
     </RelativeLayout>

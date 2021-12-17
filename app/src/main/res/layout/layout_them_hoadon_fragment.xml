@@ -22,23 +22,33 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <EditText
-        android:id="@+id/et_tenkhachhang"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tl_khachhang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/custom_et"
-        android:ems="10"
-        android:layout_marginLeft="18dp"
-        android:layout_marginRight="18dp"
-        android:fontFamily="@font/poppinregular"
+        android:layout_marginTop="16dp"
         android:hint="Name"
-        android:paddingLeft="20dp"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
+        app:helperText="Require!"
+        app:counterEnabled="true"
+        app:counterMaxLength="20"
+        app:counterTextColor="@color/mauxanh"
+        app:helperTextTextColor="@color/mauxanh"
+        app:errorEnabled="true"
+        android:paddingTop="6dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        app:endIconMode="custom"
+        app:endIconTint="@color/mauxanh"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tieude" />
-
+        app:layout_constraintTop_toBottomOf="@+id/tieude">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_tenkhachhang"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:fontFamily="@font/poppinregular"
+            android:maxLength="20"
+            tools:ignore="TouchTargetSizeCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
     <LinearLayout
         android:id="@+id/layout_button"
         android:layout_width="match_parent"
@@ -84,15 +94,15 @@
         android:id="@+id/tv_created"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="112dp"
         android:backgroundTint="@color/black"
-        android:fontFamily="@font/poppinregular"
         android:drawableStart="@drawable/calendar1"
         android:drawableTint="@color/mauxanh"
+        android:fontFamily="@font/poppinregular"
         android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_tenkhachhang" />
+        app:layout_constraintTop_toBottomOf="@+id/tieude" />
 
     <TextView
         android:id="@+id/tv_createdValue"
